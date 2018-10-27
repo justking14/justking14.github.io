@@ -12,18 +12,8 @@
   <title>JUSTKING-GAMES</title>
 </head>
 <body>
-  <script>
-    //create a synth and connect it to the master output (your speakers)
-var synth = new Tone.Synth().toMaster();
+  
 
-//play a middle 'C' for the duration of an 8th note
-synth.triggerAttackRelease("C4", "8n");
-
-
-//pass in some initial values for the filter and filter envelope
-
-
-    </script>
   <div class="fluid-container">
     <div class="blue-back">
     <div class="row">
@@ -73,10 +63,157 @@ synth.triggerAttackRelease("C4", "8n");
             <iframe width="560" height="315" src="https://www.youtube.com/embed/iKh4mZVZ2GE?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/mKK8ggCoAs8?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
             <iframe width="560" height="315" src="https://www.youtube.com/embed/Zq2jjhIHotQ?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-        </div>
+          </div>
       </div>
     </div>
 
   </div> <!-- END OF FLUID CONTAINER -->
 </body>
+<main>
+    <canvas class="retro" id="game" width="1300" height="3072"></canvas>
+</main>
+<script>
+    //create a synth and connect it to the master output (your speakers)
+var synth = new Tone.Synth().toMaster();
+
+//play a middle 'C' for the duration of an 8th note
+synth.triggerAttackRelease("C4", "8n");
+
+
+//pass in some initial values for the filter and filter envelope
+
+
+function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+}
+
+
+
+var c=document.getElementById("game");
+var ctx=c.getContext("2d");
+var gravity = 0.04;
+var particles = [];
+
+var width = 1300;
+var height = 768*4;
+
+function Particle76(){
+        this.sizeX = Math.random()*(height/10);
+        this.sizeY = Math.random()*(height/10);
+
+        this.velocity = {x:0, y:0};
+        this.position = {x:0, y:0};
+
+        this.toExplode = true;
+        this.exploded = false;
+        this.fade = false;
+        this.alpha = 1.0;
+        this.explodeHeight = 0.4 + Math.random()*0.5;
+    this.color = getRandomColor()
+
+
+    this.setPosition = function(pos){
+        this.position = pos;
+    }
+    this.setVelocity = function(vel){
+        this.velocity = vel;
+    }
+    this.update = function(){
+        this.position.x+=this.velocity.x;
+        this.position.y+=this.velocity.y;
+
+        if(this.toExplode === false){
+        this.velocity.y += gravity;
+        }
+
+        if(this.fade){
+            this.alpha-=0.01;
+            if(this.alpha < 0){
+                this.alpha = 0
+            }
+            this.sizeX*=0.99;
+        }
+    }
+    this.draw = function(ctx){
+        ctx.globalAlpha = this.alpha
+
+        ctx.fillStyle =this.color
+        ctx.fillRect(this.position.x, this.position.y, this.sizeX, this.sizeX)
+    }
+}
+
+function explode(part){
+    console.log("boom")
+  const steps = 8 + Math.round(Math.random()*6);;
+  const radius = 2 + Math.random()*4;;
+  for (var i = 0; i < steps; i++) {
+    // get velocity
+    var x = radius * Math.cos(2 * Math.PI * i / steps);
+    var y = radius * Math.sin(2 * Math.PI * i / steps);
+    // add particle
+    var particle = new Particle76();
+    particle.fade = true;
+    particle.toExplode = false;
+    particle.color = part.color
+    particle.fade = true
+
+    particle.position.x = part.position.x;
+    particle.position.y = part.position.y;
+
+    particle.sizeX = part.sizeX
+
+    particle.setVelocity({x: x, y: y});
+    particles.push(particle);
+  }
+}
+
+
+function launchParticle(){
+    var particle = new Particle76()
+
+    particle.setPosition({x: Math.random()*(width), y: height});
+    particle.setVelocity({x: -1.5 + Math.random()*10, y: -1.9 + Math.random()*-4});
+
+    //particle.setVelocity({x: 0.0, y: -0.16})
+    particles.push(particle)
+
+    setTimeout(launchParticle, 20+Math.random()*60);
+
+}
+launchParticle()
+
+function render() {
+    requestAnimationFrame(function () {
+        render();
+                //draw();
+
+            //  runGameLoop();
+    });    
+    ctx.clearRect(0, 0, width, height);
+    ctx.globalAlpha = 1.0
+    ctx.fillStyle = "black"
+    ctx.fillRect(0,0,width, height)
+    for (var i = 0; i < particles.length; i++) {
+        particles[i].update();
+        if(particles[i].toExplode === true && particles[i].exploded === false){
+            if(particles[i].position.y < particles[i].explodeHeight * height){
+                particles[i].alpha = 0.0
+                particles[i].exploded = true;
+                explode(particles[i])
+            }
+        }
+
+        particles[i].draw(ctx);
+    }
+}
+render()
+
+    </script>
+
+
 </html>
