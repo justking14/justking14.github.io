@@ -1,86 +1,348 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src='./script.js'></script>
-  <script src='./Tone.js'></script>
-  <link rel='stylesheet' type='text/css' href='./style.css'>
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.6/css/bootstrap.min.css" integrity="sha384-rwoIResjU2yc3z8GV/NPeZWAv56rSmLldC3R/AZzGRnGxQQKnKkoFVhFQhNUwEyJ" crossorigin="anonymous">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-  <title>JUSTKING-GAMES</title>
+    
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #417cfa;
+  padding: 20px;
+  font-family: Arial;
+}
+
+/* Center website */
+.main {
+  max-width: 1000px;
+  margin: auto;
+}
+
+h1 {
+  font-size: 50px;
+  word-break: break-all;
+}
+
+.row {
+  margin: 10px -16px;
+}
+
+/* Add padding BETWEEN each column */
+.row,
+.row > .column {
+  padding: 8px;
+}
+
+/* Create three equal columns that floats next to each other */
+.column {
+  float: left;
+  width: 33.33%;
+  display: none; /* Hide all elements by default */
+}
+
+/* Clear floats after rows */ 
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Content */
+.content {
+  background-color: white;
+  padding: 10px;
+}
+
+/* The "show" class is added to the filtered elements */
+.show {
+  display: block;
+}
+
+/* Style the buttons */
+.btn {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  background-color: white;
+  cursor: pointer;
+}
+
+.btn:hover {
+  background-color: #ddd;
+}
+
+.btn.active {
+  background-color: #666;
+  color: white;
+}
+</style>
 </head>
 <body>
-  
 
-  <div class="fluid-container">
-    <div class="blue-back">
-    <div class="row">
-      <div class="col-md-8 offset-md-2">
-        <header>
-          <span class="logo">Justking Games</span>
-        </header>
-      </div>
-    </div>
-    <div class="row">
-      <div class="col-md-6 offset-md-3 title-container">
-        <h1 class="title-task-text">Justking Games</h1>
-        <p class='title-description-text'>Justking Games is a subdivision of Hungry Witches for World Domination.</p>
-      </div>
-    </div>
+<!-- MAIN (Center website) -->
+<div class="main">
 
-    <div class="row">
-      <div class="col-md-12">
-        <div class="watch-video-container">
-          <iframe src="https://itch.io/embed/251756" height="167" width="552" frameborder="0"></iframe>
-          <iframe frameborder="0" src="https://itch.io/embed/305900?bg_color=000000&amp;fg_color=ffffff" width="552" height="167"></iframe>
-                    <iframe src="https://itch.io/embed/228446" height="167" width="552" frameborder="0"></iframe>
-          <iframe src="https://itch.io/embed/199839" height="167" width="552" frameborder="0"></iframe>
+<h1>Justking Games</h1>
+<hr>
 
-          <iframe src="https://itch.io/embed/180352" height="167" width="552" frameborder="0"></iframe>
+<h2>PORTFOLIO</h2>
+
+<h3>justking1414@gmail.com</h3>
+
+
+<div id="myBtnContainer">
+  <button class="btn active" onclick="filterSelection('All')"> Show all</button>
+  <button class="btn" onclick="filterSelection('3D')"> 3D</button>
+  <button class="btn" onclick="filterSelection('Games')"> Games</button>
+  <button class="btn" onclick="filterSelection('Pixel_Art')"> Pixel Art</button>
+  <button class="btn" onclick="filterSelection('Other_Art')"> Other Art</button>
+
+</div>
+
+
+<!-- Portfolio Gallery Grid -->
+<div class="row">
+
+    <div class="column Other_Art">
+        <div class="content">
+          <img src="sheep.jpg" alt="Pixel_Art" style="width:100%">
+          <h4>Adorable</h4>
         </div>
       </div>
+    
+    
+
+  <div class="column Pixel_Art">
+    <div class="content">
+      <img src="scene1g.gif" alt="Pixel_Art" style="width:100%">
+      <h4>Mountains</h4>
     </div>
-
-    <div class="row">
-        <div class="col-md-12 offset-md-1">
-            <img src="plant.gif" alt="Flowers in Chania">
-            <img src="rain2.gif" alt="Flowers in Chania">
-            <img src="eyeDeath.gif" alt="Flowers in Chania">
-
-            <img src="tv.gif" alt="Flowers in Chania">
-
-
-            <img src="train2.gif" alt="Flowers in Chania">
-            <img src="unicorn1g.gif" alt="Flowers in Chania">
-
-            <img src="scene1g.gif" alt="Flowers in Chania">
-            <img src="pig66.gif" alt="Flowers in Chania">
-            <img src="p123.gif" alt="Flowers in Chania">
-
-
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/iKh4mZVZ2GE?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/mKK8ggCoAs8?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-            <iframe width="560" height="315" src="https://www.youtube.com/embed/Zq2jjhIHotQ?rel=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
-          </div>
-      </div>
+  </div>
+  <div class="column Pixel_Art">
+    <div class="content">
+      <img src="eyeDeath.gif" alt="Pixel_Art" style="width:100%">
+      <h4>Boom</h4>
     </div>
+  </div>
+  <div class="column Pixel_Art">
+    <div class="content">
+      <img src="rain2.gif" alt="Pixel_Art" style="width:100%">
+      <h4>Rain</h4>
+    </div>
+  </div>
+  <div class="column Pixel_Art">
+    <div class="content">
+      <img src="plant.gif" alt="Pixel_Art" style="width:100%">
+      <h4>Be Careful</h4>
+    </div>
+  </div>
+  <div class="column Pixel_Art">
+    <div class="content">
+      <img src="train2.gif" alt="Pixel_Art" style="width:100%">
+      <h4>Train</h4>
+    </div>
+  </div>
+  <div class="column Pixel_Art">
+    <div class="content">
+      <img src="unicorn1g.gif" alt="Pixel_Art" style="width:100%">
+      <h4>Untitled</h4>
+    </div>
+  </div>
 
-  </div> <!-- END OF FLUID CONTAINER -->
-</body>
-<main>
-    <canvas class="retro" id="game" width="1300" height="3072"></canvas>
-</main>
+
+
+  
+
+
+  <div class="column 3D">
+    <div class="content">
+        <iframe class="embed-responsive-item" 
+            frameborder="0" 
+            allowfullscreen="1"
+            title="YouTube video player" 
+            width="100%" 
+            height="400px"   
+            src="https://www.youtube.com/embed/idmpt94_jtA">
+        </iframe>
+
+        <h4>3D Visual Effects Final</h4>
+      <p>Made in Houdini</p>
+    </div>
+  </div>
+
+  <div class="column 3D">
+    <div class="content">
+        <iframe class="embed-responsive-item" 
+            frameborder="0" 
+            allowfullscreen="1"
+            title="YouTube video player" 
+            width="100%" 
+            height="400px"   
+            src="https://www.youtube.com/embed/Zq2jjhIHotQ?rel=0">
+        </iframe>
+
+        <h4>3D Bootcamp Final</h4>
+      <p>Made in Unity and Maya </p>
+    </div>
+  </div>
+
+
+  <div class="column Games">
+    <div class="content">
+        <iframe class="embed-responsive-item" 
+            frameborder="0" 
+            allowfullscreen="1"
+            title="Itch Link" 
+            width="100%" 
+            height="400px"   
+            src="https://itch.io/embed/337133">
+        </iframe>
+      <h4>P.O.V.</h4>
+      <p>Flip, grow, and shrink to navigate your way through this platforming adventure</p>
+    </div>
+  </div>
+  <div class="column Games">
+    <div class="content">
+        <iframe class="embed-responsive-item" 
+            frameborder="0" 
+            allowfullscreen="1"
+            title="Itch Link" 
+            width="100%" 
+            height="400px"   
+            src="https://itch.io/embed/453481">
+        </iframe>
+      <h4>Find the Effected</h4>
+      <p>Search the cubes for the one with the white side as they spin faster and faster! </p>
+    </div>
+  </div>
+  
+
+
+
+  <div class="column Games">
+    <div class="content">
+        <iframe class="embed-responsive-item" 
+            frameborder="0" 
+            allowfullscreen="1"
+            title="Itch Link" 
+            width="100%" 
+            height="400px"   
+            src="https://itch.io/embed/228446">
+        </iframe>
+      <h4>Curling</h4>
+      <p>Put your years of curling practice to use in this hyper-realistic curling simulator</p>
+    </div>
+  </div>
+
+  <div class="column Games">
+    <div class="content">
+        <iframe class="embed-responsive-item" 
+            frameborder="0" 
+            allowfullscreen="1"
+            title="Itch Link" 
+            width="100%" 
+            height="400px"   
+            src="https://itch.io/embed/251756">
+        </iframe>
+      <h4>Cell</h4>
+      <p>Move around the screen avoiding the randomly generated particles.  </p>
+    </div>
+  </div>
+
+
+  <div class="column Games">
+    <div class="content">
+        <iframe class="embed-responsive-item" 
+            frameborder="0" 
+            allowfullscreen="1"
+            title="Itch Link" 
+            width="100%" 
+            height="400px"   
+            src="https://itch.io/embed/199839">
+        </iframe>
+      <h4>Flowers And Bombs</h4>
+      <p>The Divine Light Begins to fade and must be fed with the fallen flowers, but the field has become a battlefield over the ages and remnants of war remain.      </p>
+    </div>
+  </div>
+
+  <div class="column Games">
+    <div class="content">
+        <iframe class="embed-responsive-item" 
+            frameborder="0" 
+            allowfullscreen="1"
+            title="Itch Link" 
+            width="100%" 
+            height="400px"   
+            src="https://itch.io/embed/180352">
+        </iframe>
+      <h4>Scrambled Eggs</h4>
+      <p>Match the order to eggs and scramble them
+
+    </p>
+    </div>
+  </div>
+
+
+<!-- END GRID -->
+</div>
+
+<!-- END MAIN -->
+</div>
+
+
+
 <script>
-    //create a synth and connect it to the master output (your speakers)
-var synth = new Tone.Synth().toMaster();
+//    response.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Strict");
 
-//play a middle 'C' for the duration of an 8th note
-synth.triggerAttackRelease("C4", "8n");
+filterSelection("All")
+function filterSelection(c) {
+    var x, i;
+    x = document.getElementsByClassName("column");
+    if (c == "All"){c = "";}
+    for (i = 0; i < x.length; i++) {
+        w3RemoveClass(x[i], "show");
+        if (x[i].className.indexOf(c) > -1){w3AddClass(x[i], "show");}
+    }
+}
+
+//remove item if they aren't present
+function w3RemoveClass(element, name) {
+    var i, arr1, arr2;
+    arr1 = element.className.split(" ");
+    arr2 = name.split(" ");
+    console.log(arr1, arr2, arr1.indexOf(arr2[0]))
+    for (i = 0; i < arr2.length; i++) {
+        while (arr1.indexOf(arr2[i]) > -1) {arr1.splice(arr1.indexOf(arr2[i]), 1);}
+    }
+    element.className = arr1.join(" ");
+}
+
+//add item if they are present
+function w3AddClass(element, name) {
+  var i, arr1, arr2;
+  arr1 = element.className.split(" ");
+  arr2 = name.split(" ");
+  for (i = 0; i < arr2.length; i++) {
+    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
+  }
+}
 
 
-//pass in some initial values for the filter and filter envelope
+
+// Add active class to the current button (highlight it)
+var btnContainer = document.getElementById("myBtnContainer");
+var btns = btnContainer.getElementsByClassName("btn");
+for (var i = 0; i < btns.length; i++) {
+  btns[i].addEventListener("click", function(){
+    var current = document.getElementsByClassName("active");
+    current[0].className = current[0].className.replace(" active", "");
+    this.className += " active";
+  });
+}
+
+
 
 
 function getRandomColor() {
@@ -177,7 +439,11 @@ function launchParticle(){
     var particle = new Particle76()
 
     particle.setPosition({x: Math.random()*(width), y: height});
+<<<<<<< Updated upstream
     particle.setVelocity({x: -1.5 + Math.random()*10, y: -1.9 + Math.random()*-40});
+=======
+    particle.setVelocity({x: -5 + Math.random()*10, y: -7 + Math.random()*-14});
+>>>>>>> Stashed changes
 
     //particle.setVelocity({x: 0.0, y: -0.16})
     particles.push(particle)
@@ -198,7 +464,9 @@ function render() {
     ctx.globalAlpha = 1.0
     ctx.fillStyle = "black"
     ctx.fillRect(0,0,width, height)
-    for (var i = 0; i < particles.length; i++) {
+
+    var arCount = 0;
+    for (var i = 0; i < particles.length - arCount; i++) {
         particles[i].update();
         if(particles[i].toExplode === true && particles[i].exploded === false){
             if(particles[i].position.y < particles[i].explodeHeight * height){
@@ -207,13 +475,20 @@ function render() {
                 explode(particles[i])
             }
         }
-
         particles[i].draw(ctx);
+        if(particles[i].y > height + particles[i].sizeX){
+          particles.splice(i, 1)
+          arCount++;
+        }
     }
 }
 render()
 
-    </script>
 
 
+
+
+</script>
+
+</body>
 </html>
