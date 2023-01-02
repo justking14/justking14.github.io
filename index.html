@@ -170,11 +170,16 @@
 
                const image = document.createElement("img")
                image.src = src;
-               image.style.width = "95%"
-               image.style.height = "275px"
+               image.style.display = "block"
+              
+               image.style.maxWidth = "95%"
+               image.style.maxHeight = "275px"
+               image.style.width = "auto"
+               image.style.height = "auto"
                image.style.alignItems = "center";
                image.style.justifyContent = "center";
                innerDiv.appendChild(image)
+               
 
                const header = document.createElement("h4")
                let text = document.createTextNode(title)
