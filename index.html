@@ -162,11 +162,13 @@
                const innerDiv = document.createElement("div")
                innerDiv.classList.add("content")
                innerDiv.style.width = "100%"
-               innerDiv.style.height = "300px"
+               innerDiv.style.height = "350px"
                div.appendChild(innerDiv)
 
                const image = document.createElement("img")
                image.src = src;
+               image.style.width = "100%"
+               image.style.height = "300px"
                innerDiv.appendChild(image)
 
                const header = document.createElement("h4")
