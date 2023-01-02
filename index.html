@@ -1,499 +1,359 @@
 <!DOCTYPE html>
 <html>
 <head>
-    
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<style>
-* {
-  box-sizing: border-box;
-}
+     <meta name="viewport" content="width=device-width, initial-scale=1">
+     <style>
+          * {
+               box-sizing: border-box;
+          }
 
-body {
-      background: linear-gradient(45deg, blue, red);
+          body {
+               background: linear-gradient(45deg, blue, red);
+               font-family: Arial;
+               align-items: center;
+               display: flex;
+               justify-content: center;
+               margin: 0px;
+               padding: 0px;
+          }
 
-  padding: 20px;
-  font-family: Arial;
-}
+          /* Center website */
+          .main {
+               max-width: 1000px;
+               margin: auto;
+          }
 
-/* Center website */
-.main {
-  max-width: 1000px;
-  margin: auto;
-}
+          h1 {
+               font-size: 50px;
+               word-break: break-all;
+          }
 
-h1 {
-  font-size: 50px;
-  word-break: break-all;
-}
+          .row {
+               margin: 10px -16px;
+          }
 
-.row {
-  margin: 10px -16px;
-}
+          /* Add padding BETWEEN each column */
+          .row,
+          .row>.column {
+               padding: 5px;
+          }
 
-/* Add padding BETWEEN each column */
-.row,
-.row > .column {
-  padding: 8px;
-}
+          /* Create three equal columns that floats next to each other */
+          .column {
+               float: left;
+               width: 33.33%;
+               display: none;
+               /* Hide all elements by default */
+          }
 
-/* Create three equal columns that floats next to each other */
-.column {
-  float: left;
-  width: 33.33%;
-  display: none; /* Hide all elements by default */
-}
+          /* Clear floats after rows */
+          .row:after {
+               content: "";
+               display: table;
+               clear: both;
+          }
 
-/* Clear floats after rows */ 
-.row:after {
-  content: "";
-  display: table;
-  clear: both;
-}
+          /* Content */
+          .content {
+               background-color: rgb(184, 184, 184);
+               padding: 10px;
 
-/* Content */
-.content {
-  background-color: white;
-  padding: 10px;
-}
+               border: 5px solid black;
 
-/* The "show" class is added to the filtered elements */
-.show {
-  display: block;
-}
 
-/* Style the buttons */
-.btn {
-  border: none;
-  outline: none;
-  padding: 12px 16px;
-  background-color: white;
-  cursor: pointer;
-}
+               width: 100%;
+               height: 150px;
+       
+          }
+          
 
-.btn:hover {
-  background-color: #ddd;
-}
+          /* The "show" class is added to the filtered elements */
+          .show {
+               display: flex;
+          }
 
-.btn.active {
-  background-color: #666;
-  color: white;
-}
-</style>
+          /* Style the buttons */
+          .btn {
+               border: none;
+               outline: none;
+               padding: 12px 16px;
+               background-color: white;
+               cursor: pointer;
+          }
+
+          .btn:hover {
+               background-color: #ddd;
+          }
+
+          .btn.active {
+               background-color: #666;
+               color: white;
+          }
+     </style>
 </head>
+
 <body>
 
-<!-- MAIN (Center website) -->
-<div class="main">
+     <!-- MAIN (Center website) -->
+     <div class="main">
 
-<h1>Justin Buergi</h1>
-<hr>
+          <h1>Justin Buergi</h1>
+          <hr>
 
-<h2>	"but the whole burden of my teaching is that you ought to be idle"-the Grasshopper <BR><BR> 
-Justin Buergi is a graduate student at Rensselaer Polytechnic Institute, working towards his PhD in Critical Game Design.  His area of study is focused on idle games and how they keep players engagged. </h2>
+          <h2> "but the whole burden of my teaching is that you ought to be idle"-the Grasshopper <BR><BR>
+               Justin Buergi is a graduate student at Rensselaer Polytechnic Institute, working towards his PhD in
+               Critical Game Design. His area of study is focused on idle games and how they keep players engagged.
+          </h2>
 
-<h3>buergj@rpi.edu</h3>
-
-
-<div id="myBtnContainer">
-  <button class="btn active" onclick="filterSelection('Games')"> Games</button>
-
-  <button class="btn" onclick="filterSelection('Pixel_Art')"> Pixel Art</button>
-  <button class="btn" onclick="filterSelection('3D')"> 3D</button>
-
-  <button class="btn" onclick="filterSelection('Other_Art')"> Other Art</button>
-  <button class="btn" onclick="filterSelection('Academic_Writing')"> Academic Writing</button>
-
-</div>
+          <h3>buergj@rpi.edu</h3>
 
 
-<!-- Portfolio Gallery Grid -->
-<div class="row">
+          <div id="myBtnContainer">
+               <button class="btn active" onclick="filterSelection('Games')"> Games</button>
 
-    <div class="column Other_Art">
-        <div class="content">
-          <img src="sheep.jpg" alt="Pixel_Art" style="width:100%">
-          <h4>Adorable</h4>
-        </div>
-      </div>
+               <button class="btn" onclick="filterSelection('Pixel_Art')"> Pixel Art</button>
+               <button class="btn" onclick="filterSelection('3D')"> 3D</button>
+
+               <button class="btn" onclick="filterSelection('Other_Art')"> Other Art</button>
+               <button class="btn" onclick="filterSelection('Academic_Writing')"> Academic Writing</button>
+
+          </div>
+
+
+          <div class="column Academic_Writing">
+               <div class="content">
+                    <p><a href="https://docs.google.com/document/d/1KQAmsJ6OaNd7ssDGC99-exT8HgVcZBY04RdmY3tq7Ok/edit?usp=sharing/">The
+                              Inconvenient Truth of Virtual Reality</a></p>
+                    <h4>A brief discussion on why VR may only be the future of gaming for a certain demographic of players. </h4>
+               </div>
+          </div>
+
+          <div class="column Academic_Writing">
+               <div class="content">
+
+                    <p><a href="https://docs.google.com/document/d/1UFDGC_2NJBSmMMDmun3oF9tUg8y4wEjUTs7gBIUDjXQ/edit?usp=sharing/">Narrative
+                              Literature Review</a></p>
+                    <h4>A Narrative Literature Review of "A Taxonomy of Idle Games." </h4>
+               </div>
+          </div>
+
+          <div class="column Academic_Writing">
+               <div class="content">
+                    
+                    <p><a href="https://docs.google.com/document/d/1XSyXuxf_GF1yvYNxDIs89J_YvI5FnBLlX2C4OczG4og/edit?usp=sharing/">Candidacy Exam Prototype</a></p>
+                              <h4>Prototype for my Spring 2023 Candidacy Exam" </h4>
+                         </div>
+                    </div>
+
+          <!-- END MAIN -->
+     </div>
+
+     
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+     <script>
+          //    response.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Strict");
+
+          function createArt(parent, type, src, title){
+               const div = document.createElement("div");
+               div.classList.add("column")
+               div.classList.add(type)
+
+               const innerDiv = document.createElement("div")
+               innerDiv.classList.add("content")
+               innerDiv.style.width = "100%"
+               innerDiv.style.height = "300px"
+               div.appendChild(innerDiv)
+
+               const image = document.createElement("img")
+               image.src = image;
+               innerDiv.appendChild(image)
+
+               const header = document.createElement("h4")
+               let text = document.createTextNode(title)
+               header.appendChild(text)
+
+               innerDiv.appendChild(header)
+               parent.appendChild(div)
+          }
+
+          function create3DElement(parent, src, title, paragraphText){
+               const div = document.createElement("div");
+               div.classList.add("column")
+               div.classList.add("3D")
+
+               const innerDiv = document.createElement("div")
+               innerDiv.classList.add("content")
+               innerDiv.style.height = "425px"
+               div.appendChild(innerDiv)
+
+               const iframeHolder = document.createElement("iframe")
+               iframeHolder.classList.add("embed-responsive-item")
+               iframeHolder.style.frameborder = "0"
+               iframeHolder.style.allowfullscreen = "1"
+               iframeHolder.style.title = "YouTube Video Player"
+               iframeHolder.src = src
+               iframeHolder.style.width = "100%"
+               iframeHolder.style.height = "300px"
+               innerDiv.appendChild(iframeHolder)
+
+               const header = document.createElement("h4")
+               let text = document.createTextNode(title)
+               header.appendChild(text)
+
+               const paragraph = document.createElement("p")
+               paragraph.appendChild(document.createTextNode(paragraphText))
+
+               innerDiv.appendChild(header)
+               innerDiv.appendChild(paragraph)
+
+               parent.appendChild(div)
+          }
+
+          function createGameElement(parent, src, title, paragraphText){
+               const div = document.createElement("div");
+               div.classList.add("column")
+               div.classList.add("Games")
+
+               const innerDiv = document.createElement("div")
+               innerDiv.classList.add("content")
+               innerDiv.style.width = "100%"
+               innerDiv.style.height = "300px"
+               div.appendChild(innerDiv)
+
+               const iframeHolder = document.createElement("iframe")
+               iframeHolder.classList.add("embed-responsive-item")
+               iframeHolder.style.frameborder = "0"
+               iframeHolder.style.allowfullscreen = "1"
+               iframeHolder.style.title = "Itch Link"
+               iframeHolder.style.width = "99%" 
+               iframeHolder.src = src
+               innerDiv.appendChild(iframeHolder)
+
+               const header = document.createElement("h4")
+               let text = document.createTextNode(title)
+               header.appendChild(text)
+
+               const paragraph = document.createElement("p")
+               paragraph.appendChild(document.createTextNode(paragraphText))
+
+               innerDiv.appendChild(header)
+               innerDiv.appendChild(paragraph)
+
+               parent.appendChild(div)
+
+          }
+          const div = document.createElement("div");
+          div.classList.add("row")
+
+          createGameElement(div, "https://itch.io/embed/1691293", "Here There Be Dragons", "Find the dragons!")
+          createGameElement(div, "https://itch.io/embed/1273329", "Who Done It?", "Can you identify the killer without giving into the temptation of microtransactions?")
+          createGameElement(div, "https://itch.io/embed/1436217", "RP(idle)", "Automate to Oblivion")
+          createGameElement(div, "https://itch.io/embed/1729164", "Pig Clicker", "Click the Pig")
+          createGameElement(div, "https://itch.io/embed/1307538", "RP(idle) 2.0", "Will you play the game or will it play you?")
+          createGameElement(div, "https://itch.io/embed/1219867", "Calm Waters", "Keep the wheel steady to guide your ship through a heavy storm.")
+          createGameElement(div, "https://itch.io/embed/337133", "P.O.V.", "Flip, grow, and shrink to navigate your way through this platforming adventure.")
+          createGameElement(div, "https://itch.io/embed/453481", "Find the Effected", "Search the cubes for the one with the white side as they spin faster and faster! ")
+          createGameElement(div, "https://itch.io/embed/228446", "Curling", "Put your years of curling practice to use in this hyper-realistic curling simulator.")
+
+          create3DElement(div, "https://www.youtube.com/embed/idmpt94_jtA", "3D Visual Effects Final", "Made in Houdini")
+          create3DElement(div, "https://www.youtube.com/embed/Zq2jjhIHotQ?rel=0", "3D Bootcamp Final", "Made in Unity and Maya" )
+
+          createArt(div, "Other_Art", "sheep.jpg", "Adorable")
+          createArt(div, "Other_Art", "hollow.png", "Merry Christmas")
+          createArt(div, "Other_Art", "260351096_4510323585670370_2817518948352853795_n.jpg", "Inktober 2021")
+
+
+          createArt(div, "Pixel_Art", "scene1g.gif", "Mountains")
+          createArt(div, "Pixel_Art", "eyeDeath.gif", "Boom")
+          createArt(div, "Pixel_Art", "rain2.gif", "Rain")
+          createArt(div, "Pixel_Art", "plant.gif", "Be Careful")
+          createArt(div, "Pixel_Art", "train2.gif", "Train")
+          createArt(div, "Pixel_Art", "unicorn1g.gif", "Untitled")
+
+
+
+          document.getElementsByClassName("main")[0].appendChild(div)
+
     
-      <div class="column Other_Art">
-        <div class="content">
-          <img src="hollow.png" alt="Pixel_Art" style="width:100%">
-          <h4>Merry Christmas</h4>
-        </div>
-      </div>
-    
-      <div class="column Other_Art">
-        <div class="content">
-          <img src="260351096_4510323585670370_2817518948352853795_n.jpg" alt="Pixel_Art" style="width:100%">
-          <h4>Inktober 2021</h4>
-        </div>
-      </div>
-    
-    
-    <div class="column Academic_Writing">
-    <div class="content">
-        <p><a href="https://docs.google.com/document/d/1KQAmsJ6OaNd7ssDGC99-exT8HgVcZBY04RdmY3tq7Ok/edit?usp=sharing/">The Inconvenient Truth of Virtual Reality</a></p>
-      <h4>A brief discussion on why VR may only be the future of gaming for a certain demographic of players. </h4>
-    </div>
-  </div>
-    
-       <div class="column Academic_Writing">
-    <div class="content">
-        <p><a href="https://docs.google.com/document/d/1UFDGC_2NJBSmMMDmun3oF9tUg8y4wEjUTs7gBIUDjXQ/edit?usp=sharing/">Narrative Literature Review</a></p>
-      <h4>A Narrative Literature Review of "A Taxonomy of Idle Games." </h4>
-    </div>
-  </div>
-    
-    
 
-  <div class="column Pixel_Art">
-    <div class="content">
-      <img src="scene1g.gif" alt="Pixel_Art" style="width:100%">
-      <h4>Mountains</h4>
-    </div>
-  </div>
+          filterSelection("Games")
+          function filterSelection(c) {
+               var x, i;
+               x = document.getElementsByClassName("column");
+               if (c == "All") { c = ""; }
+               for (i = 0; i < x.length; i++) {
+                    w3RemoveClass(x[i], "show");
+                    if (x[i].className.indexOf(c) > -1) { w3AddClass(x[i], "show"); }
+               }
+          }
 
-  <div class="column 3D">
-    <div class="content">
-        <iframe class="embed-responsive-item" 
-            frameborder="0" 
-            allowfullscreen="1"
-            title="YouTube video player" 
-            width="100%" 
-            height="400px"   
-            src="https://www.youtube.com/embed/idmpt94_jtA">
-        </iframe>
+          //remove item if they aren't present
+          function w3RemoveClass(element, name) {
+               var i, arr1, arr2;
+               arr1 = element.className.split(" ");
+               arr2 = name.split(" ");
+               console.log(arr1, arr2, arr1.indexOf(arr2[0]))
+               for (i = 0; i < arr2.length; i++) {
+                    while (arr1.indexOf(arr2[i]) > -1) { arr1.splice(arr1.indexOf(arr2[i]), 1); }
+               }
+               element.className = arr1.join(" ");
+          }
 
-        <h4>3D Visual Effects Final</h4>
-      <p>Made in Houdini</p>
-    </div>
-  </div>
-    
-      <div class="column Games">
-    <div class="content">
-        <iframe class="embed-responsive-item" 
-            frameborder="0" 
-            allowfullscreen="1"
-            title="Itch Link" 
-            width="100%" 
-            height="400px"   
-            src="https://itch.io/embed/1691293">
-        </iframe>
-      <h4>Here There Be Dragons</h4>
-      <p>Find the dragons.  </p>
-    </div>
-  </div>
-    
-    
-          <div class="column Games">
-    <div class="content">
-        <iframe class="embed-responsive-item" 
-            frameborder="0" 
-            allowfullscreen="1"
-            title="Itch Link" 
-            width="100%" 
-            height="400px"   
-            src="https://itch.io/embed/1273329">
-        </iframe>
-      <h4>Who Done It?</h4>
-      <p>Can you identify the killer without giving into the temptation of microtransactions?</p>
-    </div>
-  </div>
-    
-    
-          <div class="column Games">
-    <div class="content">
-        <iframe class="embed-responsive-item" 
-            frameborder="0" 
-            allowfullscreen="1"
-            title="Itch Link" 
-            width="100%" 
-            height="400px"   
-            src="https://itch.io/embed/1436217">
-        </iframe>
-      <h4>RP(idle)</h4>
-      <p>Automate to Oblivion</p>
-    </div>
-  </div>
-
-  <div class="column Games">
-    <div class="content">
-        <iframe class="embed-responsive-item" 
-            frameborder="0" 
-            allowfullscreen="1"
-            title="Itch Link" 
-            width="100%" 
-            height="400px"   
-            src="https://itch.io/embed/1729164">
-        </iframe>
-      <h4>Pig Clicker</h4>
-      <p>Click the Pig</p>
-    </div>
-  </div>
+          //add item if they are present
+          function w3AddClass(element, name) {
+               var i, arr1, arr2;
+               arr1 = element.className.split(" ");
+               arr2 = name.split(" ");
+               for (i = 0; i < arr2.length; i++) {
+                    if (arr1.indexOf(arr2[i]) == -1) { element.className += " " + arr2[i]; }
+               }
+          }
 
 
 
-        
-      <div class="column Games">
-    <div class="content">
-        <iframe class="embed-responsive-item" 
-            frameborder="0" 
-            allowfullscreen="1"
-            title="Itch Link" 
-            width="100%" 
-            height="400px"   
-            src="https://itch.io/embed/1307538">
-        </iframe>
-      <h4>RPidle 2.0 </h4>
-      <p>Will you play the game or will it play you</p>
-    </div>
-  </div>
-
-    
-  <div class="column Games">
-    <div class="content">
-        <iframe class="embed-responsive-item" 
-            frameborder="0" 
-            allowfullscreen="1"
-            title="Itch Link" 
-            width="100%" 
-            height="400px"   
-            src="https://itch.io/embed/1219867">
-        </iframe>
-      <h4>Calm Waters</h4>
-      <p>Keep the wheel steady to guide your ship through a heavy storm</p>
-    </div>
-  </div>
-
-    
-
-  <div class="column Games">
-    <div class="content">
-        <iframe class="embed-responsive-item" 
-            frameborder="0" 
-            allowfullscreen="1"
-            title="Itch Link" 
-            width="100%" 
-            height="400px"   
-            src="https://itch.io/embed/337133">
-        </iframe>
-      <h4>P.O.V.</h4>
-      <p>Flip, grow, and shrink to navigate your way through this platforming adventure</p>
-    </div>
-  </div>
-
-
-
-  <div class="column Pixel_Art">
-    <div class="content">
-      <img src="eyeDeath.gif" alt="Pixel_Art" style="width:100%">
-      <h4>Boom</h4>
-    </div>
-  </div>
-  <div class="column Pixel_Art">
-    <div class="content">
-      <img src="rain2.gif" alt="Pixel_Art" style="width:100%">
-      <h4>Rain</h4>
-    </div>
-  </div>
-  <div class="column Pixel_Art">
-    <div class="content">
-      <img src="plant.gif" alt="Pixel_Art" style="width:100%">
-      <h4>Be Careful</h4>
-    </div>
-  </div>
-  <div class="column Pixel_Art">
-    <div class="content">
-      <img src="train2.gif" alt="Pixel_Art" style="width:100%">
-      <h4>Train</h4>
-    </div>
-  </div>
-  <div class="column Pixel_Art">
-    <div class="content">
-      <img src="unicorn1g.gif" alt="Pixel_Art" style="width:100%">
-      <h4>Untitled</h4>
-    </div>
-  </div>
-
-
-
-  
+          // Add active class to the current button (highlight it)
+          var btnContainer = document.getElementById("myBtnContainer");
+          var btns = btnContainer.getElementsByClassName("btn");
+          for (var i = 0; i < btns.length; i++) {
+               btns[i].addEventListener("click", function () {
+                    var current = document.getElementsByClassName("active");
+                    current[0].className = current[0].className.replace(" active", "");
+                    this.className += " active";
+               });
+          }
 
 
 
 
-  <div class="column 3D">
-    <div class="content">
-        <iframe class="embed-responsive-item" 
-            frameborder="0" 
-            allowfullscreen="1"
-            title="YouTube video player" 
-            width="100%" 
-            height="400px"   
-            src="https://www.youtube.com/embed/Zq2jjhIHotQ?rel=0">
-        </iframe>
-
-        <h4>3D Bootcamp Final</h4>
-      <p>Made in Unity and Maya </p>
-    </div>
-  </div>
+          function getRandomColor() {
+               var letters = '0123456789ABCDEF';
+               var color = '#';
+               for (var i = 0; i < 6; i++) {
+                    color += letters[Math.floor(Math.random() * 16)];
+               }
+               return color;
+          }
 
 
-
-  <div class="column Games">
-    <div class="content">
-        <iframe class="embed-responsive-item" 
-            frameborder="0" 
-            allowfullscreen="1"
-            title="Itch Link" 
-            width="100%" 
-            height="400px"   
-            src="https://itch.io/embed/453481">
-        </iframe>
-      <h4>Find the Effected</h4>
-      <p>Search the cubes for the one with the white side as they spin faster and faster! </p>
-    </div>
-  </div>
-  
-
-
-
-  <div class="column Games">
-    <div class="content">
-        <iframe class="embed-responsive-item" 
-            frameborder="0" 
-            allowfullscreen="1"
-            title="Itch Link" 
-            width="100%" 
-            height="400px"   
-            src="https://itch.io/embed/228446">
-        </iframe>
-      <h4>Curling</h4>
-      <p>Put your years of curling practice to use in this hyper-realistic curling simulator</p>
-    </div>
-  </div>
-
-  <div class="column Games">
-    <div class="content">
-        <iframe class="embed-responsive-item" 
-            frameborder="0" 
-            allowfullscreen="1"
-            title="Itch Link" 
-            width="100%" 
-            height="400px"   
-            src="https://itch.io/embed/251756">
-        </iframe>
-      <h4>Cell</h4>
-      <p>Move around the screen avoiding the randomly generated particles.  </p>
-    </div>
-  </div>
-
-
-  <div class="column Games">
-    <div class="content">
-        <iframe class="embed-responsive-item" 
-            frameborder="0" 
-            allowfullscreen="1"
-            title="Itch Link" 
-            width="100%" 
-            height="400px"   
-            src="https://itch.io/embed/199839">
-        </iframe>
-      <h4>Flowers And Bombs</h4>
-      <p>The Divine Light Begins to fade and must be fed with the fallen flowers, but the field has become a battlefield over the ages and remnants of war remain.      </p>
-    </div>
-  </div>
-
-  <div class="column Games">
-    <div class="content">
-        <iframe class="embed-responsive-item" 
-            frameborder="0" 
-            allowfullscreen="1"
-            title="Itch Link" 
-            width="100%" 
-            height="400px"   
-            src="https://itch.io/embed/180352">
-        </iframe>
-      <h4>Scrambled Eggs</h4>
-      <p>Match the order to eggs and scramble them
-
-    </p>
-    </div>
-  </div>
-
-
-<!-- END GRID -->
-</div>
-
-<!-- END MAIN -->
-</div>
-
-
-
-<script>
-//    response.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Strict");
-
-filterSelection("Games")
-function filterSelection(c) {
-    var x, i;
-    x = document.getElementsByClassName("column");
-    if (c == "All"){c = "";}
-    for (i = 0; i < x.length; i++) {
-        w3RemoveClass(x[i], "show");
-        if (x[i].className.indexOf(c) > -1){w3AddClass(x[i], "show");}
-    }
-}
-
-//remove item if they aren't present
-function w3RemoveClass(element, name) {
-    var i, arr1, arr2;
-    arr1 = element.className.split(" ");
-    arr2 = name.split(" ");
-    console.log(arr1, arr2, arr1.indexOf(arr2[0]))
-    for (i = 0; i < arr2.length; i++) {
-        while (arr1.indexOf(arr2[i]) > -1) {arr1.splice(arr1.indexOf(arr2[i]), 1);}
-    }
-    element.className = arr1.join(" ");
-}
-
-//add item if they are present
-function w3AddClass(element, name) {
-  var i, arr1, arr2;
-  arr1 = element.className.split(" ");
-  arr2 = name.split(" ");
-  for (i = 0; i < arr2.length; i++) {
-    if (arr1.indexOf(arr2[i]) == -1) {element.className += " " + arr2[i];}
-  }
-}
-
-
-
-// Add active class to the current button (highlight it)
-var btnContainer = document.getElementById("myBtnContainer");
-var btns = btnContainer.getElementsByClassName("btn");
-for (var i = 0; i < btns.length; i++) {
-  btns[i].addEventListener("click", function(){
-    var current = document.getElementsByClassName("active");
-    current[0].className = current[0].className.replace(" active", "");
-    this.className += " active";
-  });
-}
-
-
-
-
-function getRandomColor() {
-    var letters = '0123456789ABCDEF';
-    var color = '#';
-    for (var i = 0; i < 6; i++) {
-        color += letters[Math.floor(Math.random() * 16)];
-    }
-    return color;
-}
-
-
-</script>
+     </script>
 
 </body>
+
 </html>
