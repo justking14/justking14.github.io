@@ -10,8 +10,9 @@
           body {
                background: linear-gradient(45deg, blue, red);
                font-family: Arial;
-               align-items: center;
                display: flex;
+                              
+               align-items: center;
                justify-content: center;
                margin: 0px;
                padding: 0px;
@@ -163,12 +164,14 @@
                innerDiv.classList.add("content")
                innerDiv.style.width = "100%"
                innerDiv.style.height = "350px"
+               innerDiv.style.alignItems = "center";
+               innerDiv.style.justifyContent = "center";
                div.appendChild(innerDiv)
 
                const image = document.createElement("img")
                image.src = src;
                image.style.width = "95%"
-               image.style.height = "300px"
+               image.style.height = "275px"
                innerDiv.appendChild(image)
 
                const header = document.createElement("h4")
