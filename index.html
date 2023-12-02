@@ -8,7 +8,7 @@
           }
 
           body {
-               background: linear-gradient(45deg, blue, red);
+background: linear-gradient(45deg, #7860ff, #D3B48E);
                font-family: Arial;
                display: flex;
                               
@@ -16,6 +16,7 @@
                justify-content: center;
                margin: 0px;
                padding: 0px;
+
           }
 
           /* Center website */
@@ -66,6 +67,10 @@
                height: 150px;
        
           }
+
+          .content:hover {
+     transform: scale(1.5); /* Double the size on hover */
+}
           
 
           /* The "show" class is added to the filtered elements */
@@ -251,8 +256,7 @@
           }
           const div = document.createElement("div");
           div.classList.add("row")
-
-                    
+          createGameElement(div, "https://itch.io/embed/2043015", "Idle Deliveries", "Capitalism is about having others make you money")
           createGameElement(div, "https://itch.io/embed/1977187", "Sisyphus's Summit", "Whether slow or fast, make your way up the mountain before beginning the journey anew.")
           createGameElement(div, "https://itch.io/embed/1691293", "Here There Be Dragons", "Find the dragons!")
           createGameElement(div, "https://itch.io/embed/1273329", "Who Done It?", "Can you identify the killer without giving into the temptation of microtransactions?")
@@ -271,8 +275,12 @@
 
           createArt(div, "Other_Art", "sheep.jpg", "Adorable")
           createArt(div, "Other_Art", "hollow.png", "Merry Christmas")
+          
+          createArt(div, "Other_Art", "pokemon.jpg", "Who's That Pokemon?")
+
           createArt(div, "Other_Art", "260351096_4510323585670370_2817518948352853795_n.jpg", "Inktober 2021")
           createArt(div, "Other_Art", "erma.jpg", "Inktober 2022")
+          createArt(div, "Other_Art", "sonic.png", "Inktober 2023")
 
 
           createArt(div, "Pixel_Art", "scene1g.gif", "Mountains")
@@ -282,6 +290,8 @@
           createArt(div, "Pixel_Art", "train2.gif", "Train")
           createArt(div, "Pixel_Art", "unicorn1g.gif", "Untitled")
 
+          createArt(div, "Pixel_Art", "pig66.gif", "Trans-Pork")
+          createArt(div, "Pixel_Art", "tv.gif", "Turn It Off")
 
 
           document.getElementsByClassName("main")[0].appendChild(div)
