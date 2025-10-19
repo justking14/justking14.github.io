@@ -2,12 +2,9 @@
 <html lang="en">
 <head>
   <meta charset="utf-8" />
-  <title>Dr. Justin Buergi — Game Design Researcher | Educator | Writer</title>
+  <title>Dr. Justin Buergi — Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Font -->
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
-
   <style>
     :root{
       --navy:#1B365D;
@@ -16,286 +13,179 @@
       --muted:#6b7280;
       --card:#ffffff;
       --bg:#f8fafc;
-      --ring:rgba(27,54,93,.25);
       --radius:14px;
+      --hr:#e6eaf2;
     }
-
-    /* Reset & base */
     *{box-sizing:border-box}
     html,body{height:100%}
     body{
-      margin:0;
+      margin:0;background:var(--bg);color:var(--ink);
       font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-      color:var(--ink);
-      background:var(--bg);
       line-height:1.6;
     }
     a{color:var(--navy);text-decoration:none}
     a:hover{text-decoration:underline}
 
-    /* Top nav */
+    /* Top bar (brand left, tabs right) */
     .nav{
-      position:sticky;top:0;z-index:50;
-      background:var(--navy);
-      color:#fff;
-      box-shadow:0 2px 0 rgba(0,0,0,.02);
+      position:sticky;top:0;z-index:50;background:var(--navy);color:#fff;
       transition:background .25s ease, box-shadow .25s ease;
+      box-shadow:0 2px 0 rgba(0,0,0,.02);
     }
     .nav.scrolled{background:var(--navy-900); box-shadow:0 8px 24px rgba(0,0,0,.18)}
     .nav-inner{
-      max-width:1100px;margin:0 auto;
-      padding:14px 20px;
-      display:flex;gap:12px;align-items:center;justify-content:space-between;
+      max-width:1100px;margin:0 auto;padding:14px 20px;
+      display:flex;align-items:center;justify-content:space-between;gap:12px;
     }
-    .brand{
-      display:flex;flex-direction:column;gap:2px;min-width:0;
-    }
-    .brand .name{font-weight:800;font-size:18px;letter-spacing:.2px;white-space:nowrap}
-    .brand .tag{opacity:.9;font-size:13px;white-space:nowrap}
-    .tabs{
-      display:flex;gap:6px;align-items:center;justify-content:flex-end;flex-wrap:wrap;
-    }
+    .brand{font-weight:800;letter-spacing:.2px;white-space:nowrap}
+    .tabs{display:flex;gap:6px;align-items:center;justify-content:flex-end;flex-wrap:wrap}
     .tab{
       appearance:none;border:0;background:transparent;color:#fff;
       padding:8px 12px;border-radius:999px;cursor:pointer;font-weight:600;
-      transition:background .18s ease, transform .12s ease;
+      transition:background .18s ease;
     }
     .tab:hover{background:rgba(255,255,255,.12)}
-    .tab.active{background:#ffffff;color:var(--navy)}
-    .menu-toggle{display:none;background:#fff;color:var(--navy);border:0;border-radius:10px;padding:8px 10px;font-weight:700}
+    .tab.active{background:#fff;color:var(--navy)}
 
-    /* Layout */
-    .wrap{max-width:1100px;margin:0 auto;padding:28px 20px}
-    .spacer{height:12px}
+    /* Wrapper */
+    .wrap{max-width:1100px;margin:0 auto;padding:24px 20px}
 
-    /* Sections */
+    /* About + Contact (always visible) */
+    .about{
+      background:linear-gradient(180deg,#fff,#f3f6fb);
+      border:1px solid var(--hr);border-radius:var(--radius);
+      padding:24px;box-shadow:0 8px 30px rgba(27,54,93,.06);
+    }
+    .about h2{margin:0 0 8px;color:var(--navy);font-size:22px;font-weight:800}
+    blockquote{
+      margin:0;padding:0 0 0 14px;border-left:3px solid var(--navy);color:#243b66
+    }
+    .about .spacer{height:14px} /* extra space between quote and paragraph */
+    .contact-inline{margin-top:10px;font-weight:600}
+    .divider{
+      height:1px;background:var(--hr);margin:20px 0 12px;border:0;
+    }
+
+    /* Sections area (tabs swap these) */
+    .sections{padding-top:6px}
     .content-section{display:none;opacity:0;transform:translateY(8px);transition:opacity .25s ease, transform .25s ease}
     .content-section.active{display:block;opacity:1;transform:translateY(0)}
-    .section-header{margin:8px 0 18px;display:flex;align-items:flex-end;gap:12px;flex-wrap:wrap}
-    .section-header h2{margin:0;font-size:22px;font-weight:800;color:var(--navy)}
-    .section-header p{margin:0;color:var(--muted);font-size:14px}
+    .section-header{margin:8px 0 16px}
+    .section-header h3{margin:0;font-size:18px;color:var(--navy)}
+    .section-header p{margin:4px 0 0;color:var(--muted);font-size:14px}
 
-    /* About card */
-    .about{
-      background:linear-gradient(180deg,#fff, #f3f6fb);
-      border:1px solid #e5e7eb;border-radius:var(--radius);
-      padding:24px; box-shadow:0 8px 30px rgba(27,54,93,.06);
-    }
-    blockquote{
-      margin:0 0 12px;padding:0 0 0 12px;border-left:3px solid var(--navy);color:#243b66
-    }
-
-    /* Grid */
+    /* Grid (2 per row for games / responsive) */
     .grid{
       display:grid;gap:18px;
-      grid-template-columns:repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns:repeat(2, minmax(0,1fr));
     }
+    @media (max-width:820px){
+      .grid{grid-template-columns:1fr}
+    }
+
+    /* Card wrapper for itch thumbnails & other items */
     .card{
-      background:var(--card);border:1px solid #e6eaf2;border-radius:var(--radius);
+      background:var(--card);border:1px solid var(--hr);border-radius:var(--radius);
       overflow:hidden;box-shadow:0 6px 18px rgba(27,54,93,.06);
       transition:transform .18s ease, box-shadow .18s ease;
     }
     .card:hover{transform:translateY(-4px);box-shadow:0 12px 28px rgba(27,54,93,.12)}
-    .card-media{
-      background:#f0f3f9;border-bottom:1px solid #e6eaf2;
-      display:flex;align-items:center;justify-content:center;
-      aspect-ratio:16/9; /* keeps embeds consistent */
-    }
-    .card iframe{width:100%;height:100%;border:0;display:block}
     .card-body{padding:14px 16px}
     .card h4{margin:0 0 4px;font-size:16px}
     .card p{margin:0 0 8px;color:#475569;font-size:14px}
     .tag{display:inline-block;font-size:12px;padding:4px 8px;border-radius:999px;background:#eef2ff;color:#1d2b55;font-weight:600}
 
-    /* Writing list style (no heavy embeds) */
+    /* Writing list */
     .list{display:grid;gap:14px}
     .list-item{
-      padding:14px 16px;background:#fff;border:1px solid #e6eaf2;border-radius:12px;
+      padding:14px 16px;background:#fff;border:1px solid var(--hr);border-radius:12px;
       display:flex;flex-direction:column;gap:6px
     }
     .list-item .meta{color:#64748b;font-size:13px}
-
-    /* Contact */
-    .contact{display:flex;flex-direction:column;gap:10px}
-    .contact a.btn{
-      display:inline-flex;align-items:center;gap:8px;
-      background:var(--navy);color:#fff;border-radius:10px;padding:10px 14px;font-weight:700;border:1px solid transparent;
-      text-decoration:none
-    }
-    .contact a.btn:hover{filter:brightness(1.05)}
-
-    /* Mobile */
-    @media (max-width:800px){
-      .tabs{display:none}
-      .menu-toggle{display:inline-block}
-      .nav-inner{align-items:flex-start}
-      .brand .name{font-size:16px}
-      .brand .tag{font-size:12px}
-    }
-    .tabs.open{display:flex;flex-direction:column;gap:8px;margin-top:10px}
   </style>
 </head>
 <body>
-  <!-- NAV -->
-  <nav class="nav" role="navigation" aria-label="Primary">
+  <!-- NAV (brand + right-aligned tabs) -->
+  <nav class="nav">
     <div class="nav-inner">
-      <div class="brand" aria-label="Site identity">
-        <div class="name">Dr. Justin Buergi</div>
-        <div class="tag">Game Design Researcher | Educator | Writer</div>
-      </div>
-      <button class="menu-toggle" aria-controls="nav-tabs" aria-expanded="false">Menu ▾</button>
-      <div class="tabs" id="nav-tabs" role="tablist">
-        <button class="tab active" role="tab" aria-selected="true" data-target="about">About</button>
-        <button class="tab" role="tab" aria-selected="false" data-target="games">Games</button>
+      <div class="brand">Dr. Justin Buergi</div>
+      <div class="tabs" id="tabs" role="tablist" aria-label="Portfolio Sections">
+        <button class="tab active" role="tab" aria-selected="true" data-target="games">Games</button>
         <button class="tab" role="tab" aria-selected="false" data-target="writing">Academic Writing</button>
         <button class="tab" role="tab" aria-selected="false" data-target="vfx3d">3D</button>
         <button class="tab" role="tab" aria-selected="false" data-target="pixel">Pixel Art</button>
         <button class="tab" role="tab" aria-selected="false" data-target="otherart">Other Art</button>
-        <button class="tab" role="tab" aria-selected="false" data-target="contact">Contact</button>
       </div>
     </div>
   </nav>
 
-  <main class="wrap">
-    <!-- ABOUT -->
-    <section id="about" class="content-section active" aria-labelledby="about-h">
-      <div class="section-header">
-        <h2 id="about-h">About</h2>
-        <p>Short intro + quote</p>
-      </div>
-      <div class="about">
-        <blockquote>“But the whole burden of my teaching is that you ought to be idle.” — <em>The Grasshopper</em></blockquote>
-        <p>I’m a game design researcher and educator examining how the psychological needs of players can be satisfied in the absence of challenge. Drawing from Self-Determination Theory and Cognitive Evaluation Theory, my work explores how idle games sustain motivation and engagement through rapid progression, positive feedback, and freedom from failure.</p>
-      </div>
+  <!-- ALWAYS VISIBLE: About + Contact -->
+  <div class="wrap">
+    <section class="about" aria-labelledby="about-h">
+      <h2 id="about-h">About</h2>
+      <blockquote>“But the whole burden of my teaching is that you ought to be idle.” — <em>The Grasshopper</em></blockquote>
+      <div class="spacer"></div>
+      <p>I’m a game design researcher and educator examining how the psychological needs of players can be satisfied in the absence of challenge. Drawing from Self-Determination Theory and Cognitive Evaluation Theory, my work explores how idle games sustain motivation and engagement through rapid progression, positive feedback, and freedom from failure.</p>
+      <p class="contact-inline">📧 <a href="mailto:justkingScholar@gmail.com">justkingScholar@gmail.com</a></p>
     </section>
 
-    <!-- GAMES -->
-    <section id="games" class="content-section" aria-labelledby="games-h">
+    <!-- Subtle divider above tabs/sections -->
+    <hr class="divider" />
+  </div>
+
+  <!-- TABBED SECTIONS -->
+  <main class="wrap sections">
+    <!-- GAMES (Itch.io standard thumbnail cards; 2 per row) -->
+    <section id="games" class="content-section active" aria-labelledby="games-h">
       <div class="section-header">
-        <h2 id="games-h">Games</h2>
-        <p>Playable embeds (itch.io)</p>
+        <h3 id="games-h">Games</h3>
+        <p>Two-column grid of standard Itch.io cards</p>
       </div>
+
       <div class="grid">
-        <!-- Keep your existing embeds, neatly carded -->
+        <!-- Each card wraps the standard itch.io embed (thumbnail card) -->
         <article class="card">
-          <div class="card-media">
-            <iframe title="Ladders Are Built to Be Scaled 3" src="https://itch.io/embed/3488017"></iframe>
-          </div>
-          <div class="card-body">
-            <h4>Ladders Are Built to Be Scaled 3</h4>
-            <p>RPI Gamefest 2025: Technical Excellence Winner</p>
-            <span class="tag">Game</span>
-          </div>
+          <iframe frameborder="0" src="https://itch.io/embed/3488017?linkback=true" width="100%" height="167"></iframe>
         </article>
 
         <article class="card">
-          <div class="card-media">
-            <iframe title="Escaping the Friend Zone" src="https://itch.io/embed/3384621"></iframe>
-          </div>
-          <div class="card-body">
-            <h4>Escaping the Friend Zone</h4>
-            <p>McKinney Writing Contest: 2nd Place Graduate Electronic Media</p>
-            <span class="tag">Game</span>
-          </div>
+          <iframe frameborder="0" src="https://itch.io/embed/3384621?linkback=true" width="100%" height="167"></iframe>
         </article>
 
         <article class="card">
-          <div class="card-media">
-            <iframe title="One Step Further" src="https://itch.io/embed/2292317"></iframe>
-          </div>
-          <div class="card-body">
-            <h4>One Step Further</h4>
-            <p>RPI Gamefest 2024: Experimental Game Winner</p>
-            <span class="tag">Game</span>
-          </div>
+          <iframe frameborder="0" src="https://itch.io/embed/2292317?linkback=true" width="100%" height="167"></iframe>
         </article>
 
         <article class="card">
-          <div class="card-media">
-            <iframe title="Idle Deliveries" src="https://itch.io/embed/2043015"></iframe>
-          </div>
-          <div class="card-body">
-            <h4>Idle Deliveries</h4>
-            <p>Capitalism is about having others make you money</p>
-            <span class="tag">Game</span>
-          </div>
+          <iframe frameborder="0" src="https://itch.io/embed/2043015?linkback=true" width="100%" height="167"></iframe>
         </article>
 
         <article class="card">
-          <div class="card-media">
-            <iframe title="Idle Tamer" src="https://itch.io/embed/2614991"></iframe>
-          </div>
-          <div class="card-body">
-            <h4>Idle Tamer</h4>
-            <p>Send your bunnies to slay the rabbit king!</p>
-            <span class="tag">Game</span>
-          </div>
+          <iframe frameborder="0" src="https://itch.io/embed/2614991?linkback=true" width="100%" height="167"></iframe>
         </article>
 
         <article class="card">
-          <div class="card-media">
-            <iframe title="Here There Be Dragons" src="https://itch.io/embed/1691293"></iframe>
-          </div>
-          <div class="card-body">
-            <h4>Here There Be Dragons</h4>
-            <p>Find the dragons!</p>
-            <span class="tag">Game</span>
-          </div>
+          <iframe frameborder="0" src="https://itch.io/embed/1691293?linkback=true" width="100%" height="167"></iframe>
         </article>
 
         <article class="card">
-          <div class="card-media">
-            <iframe title="Who Done It?" src="https://itch.io/embed/1273329"></iframe>
-          </div>
-          <div class="card-body">
-            <h4>Who Done It?</h4>
-            <p>Identify the killer without giving in to microtransactions</p>
-            <span class="tag">Game</span>
-          </div>
+          <iframe frameborder="0" src="https://itch.io/embed/1273329?linkback=true" width="100%" height="167"></iframe>
         </article>
 
         <article class="card">
-          <div class="card-media">
-            <iframe title="RP(idle)" src="https://itch.io/embed/1436217"></iframe>
-          </div>
-          <div class="card-body">
-            <h4>RP(idle)</h4>
-            <p>Automate to Oblivion</p>
-            <span class="tag">Game</span>
-          </div>
+          <iframe frameborder="0" src="https://itch.io/embed/1436217?linkback=true" width="100%" height="167"></iframe>
         </article>
 
         <article class="card">
-          <div class="card-media">
-            <iframe title="Pig Clicker" src="https://itch.io/embed/1729164"></iframe>
-          </div>
-          <div class="card-body">
-            <h4>Pig Clicker</h4>
-            <p>Click the Pig</p>
-            <span class="tag">Game</span>
-          </div>
+          <iframe frameborder="0" src="https://itch.io/embed/1729164?linkback=true" width="100%" height="167"></iframe>
         </article>
 
         <article class="card">
-          <div class="card-media">
-            <iframe title="Calm Waters" src="https://itch.io/embed/1219867"></iframe>
-          </div>
-          <div class="card-body">
-            <h4>Calm Waters</h4>
-            <p>Keep the wheel steady through the storm</p>
-            <span class="tag">Game</span>
-          </div>
+          <iframe frameborder="0" src="https://itch.io/embed/1219867?linkback=true" width="100%" height="167"></iframe>
         </article>
 
         <article class="card">
-          <div class="card-media">
-            <iframe title="P.O.V." src="https://itch.io/embed/337133"></iframe>
-          </div>
-          <div class="card-body">
-            <h4>P.O.V.</h4>
-            <p>Flip, grow, and shrink through a platforming adventure</p>
-            <span class="tag">Game</span>
-          </div>
+          <iframe frameborder="0" src="https://itch.io/embed/337133?linkback=true" width="100%" height="167"></iframe>
         </article>
       </div>
     </section>
@@ -303,26 +193,26 @@
     <!-- ACADEMIC WRITING -->
     <section id="writing" class="content-section" aria-labelledby="writing-h">
       <div class="section-header">
-        <h2 id="writing-h">Academic Writing</h2>
+        <h3 id="writing-h">Academic Writing</h3>
         <p>Publications & dissertation</p>
       </div>
       <div class="list">
         <div class="list-item">
-          <a href="https://www.proquest.com/docview/3258810217?pq-origsite=gscholar&fromopenview=true&sourcetype=Dissertations%20&%20Theses">
+          <a href="https://www.proquest.com/docview/3258810217?pq-origsite=gscholar&fromopenview=true&sourcetype=Dissertations%20&%20Theses" target="_blank" rel="noopener">
             <strong>Idle Yet Engaged: How Idle Games Satisfy Our Needs for Competence and Autonomy</strong>
           </a>
           <div class="meta">Ph.D. Dissertation</div>
         </div>
 
         <div class="list-item">
-          <a href="https://czasopisma.uni.lodz.pl/Replay/article/view/23588">
+          <a href="https://czasopisma.uni.lodz.pl/Replay/article/view/23588" target="_blank" rel="noopener">
             <strong>Idle Games: A Cozy Genre Turned Exploitative</strong>
           </a>
           <div class="meta">Replay. The Polish Journal of Game Studies (University of Łódź)</div>
         </div>
 
         <div class="list-item">
-          <a href="https://mediacommons.org/imr/content/motivation-through-coziness">
+          <a href="https://mediacommons.org/imr/content/motivation-through-coziness" target="_blank" rel="noopener">
             <strong>Motivation Through Coziness</strong>
           </a>
           <div class="meta">In Media Res</div>
@@ -333,29 +223,19 @@
     <!-- 3D -->
     <section id="vfx3d" class="content-section" aria-labelledby="vfx-h">
       <div class="section-header">
-        <h2 id="vfx-h">3D</h2>
-        <p>Short reels & assignments</p>
+        <h3 id="vfx-h">3D</h3>
+        <p>Reels & assignments</p>
       </div>
       <div class="grid">
         <article class="card">
-          <div class="card-media">
-            <iframe class="embed-responsive-item" title="3D Visual Effects Final" src="https://www.youtube.com/embed/idmpt94_jtA" allowfullscreen></iframe>
-          </div>
-          <div class="card-body">
-            <h4>3D Visual Effects Final</h4>
-            <p>Made in Houdini</p>
-            <span class="tag">3D</span>
+          <div class="card-body" style="padding:0">
+            <iframe class="embed-responsive-item" title="3D Visual Effects Final" src="https://www.youtube.com/embed/idmpt94_jtA" allowfullscreen style="width:100%;height:315px;border:0"></iframe>
           </div>
         </article>
 
         <article class="card">
-          <div class="card-media">
-            <iframe class="embed-responsive-item" title="3D Bootcamp Final" src="https://www.youtube.com/embed/Zq2jjhIHotQ?rel=0" allowfullscreen></iframe>
-          </div>
-          <div class="card-body">
-            <h4>3D Bootcamp Final</h4>
-            <p>Made in Unity and Maya</p>
-            <span class="tag">3D</span>
+          <div class="card-body" style="padding:0">
+            <iframe class="embed-responsive-item" title="3D Bootcamp Final" src="https://www.youtube.com/embed/Zq2jjhIHotQ?rel=0" allowfullscreen style="width:100%;height:315px;border:0"></iframe>
           </div>
         </article>
       </div>
@@ -364,162 +244,63 @@
     <!-- PIXEL ART -->
     <section id="pixel" class="content-section" aria-labelledby="pixel-h">
       <div class="section-header">
-        <h2 id="pixel-h">Pixel Art</h2>
+        <h3 id="pixel-h">Pixel Art</h3>
         <p>GIFs & shorts</p>
       </div>
       <div class="grid">
-        <article class="card">
-          <div class="card-media"><img src="justkingBirdC.gif" alt="Angry bird pixel animation" style="width:100%;height:auto;"></div>
-          <div class="card-body"><h4>Angry</h4><span class="tag">Pixel Art</span></div>
-        </article>
-
-        <article class="card">
-          <div class="card-media"><img src="scene1g.gif" alt="Mountain scene pixel animation" style="width:100%;height:auto;"></div>
-          <div class="card-body"><h4>Mountains</h4><span class="tag">Pixel Art</span></div>
-        </article>
-
-        <article class="card">
-          <div class="card-media"><img src="eyeDeath.gif" alt="Explosion pixel animation" style="width:100%;height:auto;"></div>
-          <div class="card-body"><h4>Boom</h4><span class="tag">Pixel Art</span></div>
-        </article>
-
-        <article class="card">
-          <div class="card-media"><img src="rain2.gif" alt="Rain pixel animation" style="width:100%;height:auto;"></div>
-          <div class="card-body"><h4>Rain</h4><span class="tag">Pixel Art</span></div>
-        </article>
-
-        <article class="card">
-          <div class="card-media"><img src="plant.gif" alt="Plant pixel animation" style="width:100%;height:auto;"></div>
-          <div class="card-body"><h4>Be Careful</h4><span class="tag">Pixel Art</span></div>
-        </article>
-
-        <article class="card">
-          <div class="card-media"><img src="train2.gif" alt="Train pixel animation" style="width:100%;height:auto;"></div>
-          <div class="card-body"><h4>Train</h4><span class="tag">Pixel Art</span></div>
-        </article>
-
-        <article class="card">
-          <div class="card-media"><img src="unicorn1g.gif" alt="Unicorn pixel animation" style="width:100%;height:auto;"></div>
-          <div class="card-body"><h4>Untitled</h4><span class="tag">Pixel Art</span></div>
-        </article>
-
-        <article class="card">
-          <div class="card-media"><img src="pig66.gif" alt="Trans-Pork pixel animation" style="width:100%;height:auto;"></div>
-          <div class="card-body"><h4>Trans-Pork</h4><span class="tag">Pixel Art</span></div>
-        </article>
-
-        <article class="card">
-          <div class="card-media"><img src="tv.gif" alt="TV pixel animation" style="width:100%;height:auto;"></div>
-          <div class="card-body"><h4>Turn It Off</h4><span class="tag">Pixel Art</span></div>
-        </article>
+        <article class="card"><img src="justkingBirdC.gif" alt="Angry bird pixel animation" style="width:100%;display:block"></article>
+        <article class="card"><img src="scene1g.gif"     alt="Mountain scene pixel animation" style="width:100%;display:block"></article>
+        <article class="card"><img src="eyeDeath.gif"    alt="Explosion pixel animation"      style="width:100%;display:block"></article>
+        <article class="card"><img src="rain2.gif"       alt="Rain pixel animation"            style="width:100%;display:block"></article>
+        <article class="card"><img src="plant.gif"       alt="Plant pixel animation"           style="width:100%;display:block"></article>
+        <article class="card"><img src="train2.gif"      alt="Train pixel animation"           style="width:100%;display:block"></article>
+        <article class="card"><img src="unicorn1g.gif"   alt="Unicorn pixel animation"         style="width:100%;display:block"></article>
+        <article class="card"><img src="pig66.gif"       alt="Trans-Pork pixel animation"      style="width:100%;display:block"></article>
+        <article class="card"><img src="tv.gif"          alt="TV pixel animation"              style="width:100%;display:block"></article>
       </div>
     </section>
 
     <!-- OTHER ART -->
     <section id="otherart" class="content-section" aria-labelledby="other-h">
       <div class="section-header">
-        <h2 id="other-h">Other Art</h2>
+        <h3 id="other-h">Other Art</h3>
         <p>Illustrations & Inktober</p>
       </div>
       <div class="grid">
-        <article class="card">
-          <div class="card-media"><img src="sheep.jpg" alt="Sheep illustration" style="width:100%;height:auto;"></div>
-          <div class="card-body"><h4>Adorable</h4><span class="tag">Art</span></div>
-        </article>
-
-        <article class="card">
-          <div class="card-media"><img src="hollow.png" alt="Hollow holiday illustration" style="width:100%;height:auto;"></div>
-          <div class="card-body"><h4>Merry Christmas</h4><span class="tag">Art</span></div>
-        </article>
-
-        <article class="card">
-          <div class="card-media"><img src="pokemon.jpg" alt="Who's That Pokemon?" style="width:100%;height:auto;"></div>
-          <div class="card-body"><h4>Who's That Pokémon?</h4><span class="tag">Art</span></div>
-        </article>
-
-        <article class="card">
-          <div class="card-media"><img src="260351096_4510323585670370_2817518948352853795_n.jpg" alt="Inktober 2021 collage" style="width:100%;height:auto;"></div>
-          <div class="card-body"><h4>Inktober 2021</h4><span class="tag">Art</span></div>
-        </article>
-
-        <article class="card">
-          <div class="card-media"><img src="erma.jpg" alt="Inktober 2022 drawing" style="width:100%;height:auto;"></div>
-          <div class="card-body"><h4>Inktober 2022</h4><span class="tag">Art</span></div>
-        </article>
-
-        <article class="card">
-          <div class="card-media"><img src="sonic.png" alt="Inktober 2023 drawing" style="width:100%;height:auto;"></div>
-          <div class="card-body"><h4>Inktober 2023</h4><span class="tag">Art</span></div>
-        </article>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section id="contact" class="content-section" aria-labelledby="contact-h">
-      <div class="section-header">
-        <h2 id="contact-h">Contact</h2>
-        <p>Say hi!</p>
-      </div>
-      <div class="contact">
-        <p>Email: <a href="mailto:justkingScholar@gmail.com">justkingScholar@gmail.com</a></p>
-        <div style="display:flex;gap:10px;flex-wrap:wrap">
-          <a class="btn" href="https://justking14.github.io" target="_blank" rel="noopener">Portfolio</a>
-          <a class="btn" href="https://www.linkedin.com" target="_blank" rel="noopener">LinkedIn</a>
-          <a class="btn" href="https://itch.io/profile/justking14" target="_blank" rel="noopener">itch.io</a>
-          <!-- Add your resume PDF if you'd like -->
-          <!-- <a class="btn" href="Just_King_Creative_Scholar_Resume.pdf" target="_blank" rel="noopener">Résumé (PDF)</a> -->
-        </div>
+        <article class="card"><img src="sheep.jpg"  alt="Sheep illustration"             style="width:100%;display:block"></article>
+        <article class="card"><img src="hollow.png" alt="Holiday illustration"           style="width:100%;display:block"></article>
+        <article class="card"><img src="pokemon.jpg"alt="Who's That Pokémon?"           style="width:100%;display:block"></article>
+        <article class="card"><img src="260351096_4510323585670370_2817518948352853795_n.jpg" alt="Inktober 2021" style="width:100%;display:block"></article>
+        <article class="card"><img src="erma.jpg"   alt="Inktober 2022"                  style="width:100%;display:block"></article>
+        <article class="card"><img src="sonic.png"  alt="Inktober 2023"                  style="width:100%;display:block"></article>
       </div>
     </section>
   </main>
 
   <script>
-    // Tabs (right-aligned) with fade-in sections
+    // Tabs with fade transitions between sections
     const tabs = Array.from(document.querySelectorAll('.tab'));
     const sections = Array.from(document.querySelectorAll('.content-section'));
     function showSection(id){
       sections.forEach(sec=>{
-        if(sec.id === id){
-          sec.classList.add('active');
-          sec.setAttribute('aria-hidden','false');
-        }else{
-          sec.classList.remove('active');
-          sec.setAttribute('aria-hidden','true');
-        }
+        sec.classList.toggle('active', sec.id === id);
+        sec.setAttribute('aria-hidden', sec.id === id ? 'false' : 'true');
       });
       tabs.forEach(t=>{
         const on = t.dataset.target === id;
         t.classList.toggle('active', on);
         t.setAttribute('aria-selected', on ? 'true' : 'false');
       });
-      // close mobile menu after click
-      if (window.innerWidth <= 800) {
-        tabsContainer.classList.remove('open');
-        toggleBtn.setAttribute('aria-expanded','false');
-      }
       window.scrollTo({top:0, behavior:'smooth'});
     }
     tabs.forEach(t => t.addEventListener('click', () => showSection(t.dataset.target)));
 
-    // Default to Games or About? We’ll keep About first; uncomment for Games default:
-    // showSection('games');
-
-    // Sticky nav subtle darken on scroll
+    // Subtle darken nav on scroll
     const nav = document.querySelector('.nav');
     window.addEventListener('scroll', () => {
       if(window.scrollY > 8){ nav.classList.add('scrolled'); }
       else{ nav.classList.remove('scrolled'); }
     });
-
-    // Mobile menu
-    const toggleBtn = document.querySelector('.menu-toggle');
-    const tabsContainer = document.getElementById('nav-tabs');
-    toggleBtn.addEventListener('click', () => {
-      const isOpen = tabsContainer.classList.toggle('open');
-      toggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
-    });
   </script>
 </body>
 </html>
-
-
