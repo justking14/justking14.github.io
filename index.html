@@ -1,507 +1,302 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Dr. Justin Buergi, Ph.D. — Portfolio</title>
-
-  <!-- Typography -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
-
-  <!-- Basic SEO / Share -->
-  <meta name="description" content="Game Design Researcher | Educator | Writer — exploring how idle games satisfy psychological needs via SDT/CET."/>
-  <meta property="og:title" content="Dr. Justin Buergi — Portfolio"/>
-  <meta property="og:description" content="Game Design Researcher | Educator | Writer"/>
-  <meta property="og:type" content="website"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
-    :root{
-      --navy:#1B365D;
-      --ink:#1c1e21;
-      --muted:#6b7280;
-      --card:#ffffff;
-      --bg:#ffffff;
-      --ring: rgba(27,54,93,0.18);
-      --ring-strong: rgba(27,54,93,0.28);
-      --shadow: 0 8px 20px rgba(0,0,0,0.08);
-      --shadow-hover: 0 14px 28px rgba(0,0,0,0.12);
-      --radius: 14px;
+    :root {
+      --navy: #1B365D;
+      --light-gray: #f7f8fa;
+      --muted: #6b7280;
+      --shadow: 0 4px 10px rgba(0, 0, 0, 0.08);
+      --shadow-hover: 0 6px 18px rgba(0, 0, 0, 0.12);
+      --radius: 12px;
     }
 
     * { box-sizing: border-box; }
-    html, body { margin:0; padding:0; background:var(--bg); color:var(--ink); font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; line-height:1.5; }
+    body {
+      font-family: 'Inter', sans-serif;
+      margin: 0;
+      background: white;
+      color: #222;
+      line-height: 1.6;
+    }
 
-    /* Header */
-    .site-header{
-      background:var(--navy);
-      color:#fff;
-      padding:28px 20px;
-      border-bottom:1px solid rgba(255,255,255,0.08);
+    header {
+      background: var(--navy);
+      color: white;
+      padding: 25px 20px;
+      text-align: center;
     }
-    .container{ max-width:1100px; margin:0 auto; padding:0 20px; }
-    .header-inner{
-      display:flex; align-items:center; justify-content:space-between; gap:20px;
-    }
-    .brand{
-      display:flex; align-items:center; gap:16px; flex-wrap:wrap;
-    }
-    .avatar{
-      width:64px; height:64px; border-radius:50%; object-fit:cover; border:2px solid rgba(255,255,255,0.25);
-      box-shadow:0 4px 14px rgba(0,0,0,0.25);
-    }
-    .title-group h1{ margin:0; font-size:1.5rem; font-weight:700; letter-spacing:.2px; }
-    .title-group p{ margin:2px 0 0; font-size:.98rem; opacity:.92; }
 
-    .links{
-      display:flex; gap:12px; flex-wrap:wrap;
+    header h1 {
+      margin: 0;
+      font-size: 1.8rem;
     }
-    .link-btn{
-      background:#fff; color:var(--navy); border:1px solid rgba(255,255,255,0.2);
-      padding:10px 14px; border-radius:10px; text-decoration:none; font-weight:600; font-size:.95rem;
-      box-shadow:0 2px 10px rgba(0,0,0,0.08);
+
+    header p {
+      margin: 6px 0 0;
+      font-weight: 500;
+      font-size: 1rem;
+      opacity: 0.9;
     }
-    .link-btn:hover{ filter:brightness(0.98); transform:translateY(-1px); transition:all .12s ease-in-out; }
+
+    main {
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 20px;
+    }
 
     /* About */
-    .about{
-      padding:28px 0 8px;
-    }
-    .about .quote{
-      font-style:italic; color:var(--muted); margin:0 0 6px; font-size:.98rem;
-    }
-    .about .blurb{
-      margin:8px 0 0; font-size:1.04rem;
+    .about {
+      text-align: center;
+      margin-bottom: 35px;
     }
 
-    /* Filter bar */
-    .filters{
-      margin:24px 0 8px; display:flex; gap:10px; flex-wrap:wrap;
-    }
-    .filter-btn{
-      border:1px solid var(--ring); color:var(--navy); background:#fff;
-      padding:10px 14px; border-radius:999px; font-weight:600; cursor:pointer;
-      box-shadow:0 2px 8px rgba(0,0,0,0.05);
-    }
-    .filter-btn[aria-pressed="true"]{
-      background:var(--navy); color:#fff; border-color:var(--navy);
-      box-shadow:0 2px 10px var(--ring-strong);
+    .about blockquote {
+      font-style: italic;
+      color: var(--muted);
+      margin: 0 0 10px;
     }
 
-    /* Grid */
-    .grid{
-      display:grid; gap:18px;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      margin:16px 0 60px;
+    .about p {
+      font-size: 1.05rem;
+      margin: 0 auto;
+      max-width: 800px;
     }
 
-    /* Cards */
-    .card{
-      background:var(--card); border-radius:var(--radius);
-      box-shadow:var(--shadow); overflow:hidden; border:1px solid rgba(0,0,0,0.04);
-      display:flex; flex-direction:column; transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
-    }
-    .card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-hover); border-color: var(--ring); }
-    .thumb-wrap{
-      position:relative; background:#f3f4f6; aspect-ratio:16/9; overflow:hidden;
-    }
-    .thumb-wrap img{
-      width:100%; height:100%; object-fit:cover; display:block;
-      transition: transform .4s ease;
-    }
-    .card:hover .thumb-wrap img{ transform: scale(1.035); }
-    .meta{
-      padding:14px 14px 12px;
-      display:flex; flex-direction:column; gap:6px;
-    }
-    .meta h3{ margin:0; font-size:1.02rem; line-height:1.35; }
-    .meta p{ margin:0; color:var(--muted); font-size:.95rem; }
-    .tags{ display:flex; gap:8px; flex-wrap:wrap; margin-top:6px; }
-    .tag{
-      font-size:.78rem; font-weight:700; letter-spacing:.3px;
-      padding:4px 8px; border-radius:999px; border:1px solid var(--ring); color:var(--navy); background:#fff;
-    }
-    /* subtle category accents (optional) */
-    .card.game   .tag.main{ background:#eef3ff; border-color:#c9d6ff; }
-    .card.write  .tag.main{ background:#f4f6f8; border-color:#d5d9df; }
-    .card.art    .tag.main{ background:#f7f2ff; border-color:#e1d9ff; }
-    .card.vfx3d  .tag.main{ background:#eefaf6; border-color:#cfe9de; }
-
-    /* Footer */
-    footer{
-      border-top:1px solid #eef2f7; padding:22px 0; color:var(--muted); font-size:.95rem;
+    /* Filters */
+    .filters {
+      text-align: center;
+      margin-bottom: 20px;
     }
 
-    /* Utilities */
-    .sr-only{
-      position:absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+    .filters button {
+      background: white;
+      border: 2px solid var(--navy);
+      color: var(--navy);
+      padding: 10px 16px;
+      border-radius: 25px;
+      font-weight: 600;
+      margin: 4px;
+      cursor: pointer;
+      transition: all 0.2s ease;
     }
 
-    @media (max-width:560px){
-      .header-inner{ flex-direction:column; align-items:flex-start; }
-      .links{ width:100%; padding-top:6px; }
-      .avatar{ width:56px; height:56px; }
+    .filters button.active {
+      background: var(--navy);
+      color: white;
+    }
+
+    .filters button:hover {
+      background: #eef2fa;
+    }
+
+    /* Grid layout */
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+    }
+
+    .card {
+      background: var(--light-gray);
+      border-radius: var(--radius);
+      padding: 18px;
+      box-shadow: var(--shadow);
+      transition: all 0.25s ease;
+      border-left: 5px solid transparent;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-hover);
+      border-left-color: var(--navy);
+    }
+
+    .card h3 {
+      margin-top: 0;
+      margin-bottom: 6px;
+      font-size: 1.05rem;
+      color: var(--navy);
+    }
+
+    .card p {
+      margin: 4px 0 10px;
+      font-size: 0.95rem;
+      color: var(--muted);
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 3px 8px;
+      border-radius: 8px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--navy);
+      background: #e8edf7;
+    }
+
+    footer {
+      text-align: center;
+      color: var(--muted);
+      font-size: 0.9rem;
+      padding: 20px;
+      margin-top: 40px;
+      border-top: 1px solid #e0e4eb;
     }
   </style>
 </head>
+
 <body>
-  <!-- Header -->
-  <header class="site-header">
-    <div class="container header-inner">
-      <div class="brand">
-        <!-- Optional profile photo: replace with your image path or remove the img tag -->
-        <img class="avatar" src="headshot.jpg" alt="Portrait of Dr. Justin Buergi"/>
-        <div class="title-group">
-          <h1>Dr. Justin Buergi, Ph.D.</h1>
-          <p>Game Design Researcher | Educator | Writer</p>
-        </div>
-      </div>
-      <nav class="links" aria-label="quick links">
-        <a class="link-btn" href="mailto:justkingScholar@gmail.com">Email</a>
-        <a class="link-btn" href="https://justking14.github.io" target="_blank" rel="noopener">Portfolio</a>
-        <a class="link-btn" href="Just_King_Resume.pdf" target="_blank" rel="noopener">CV/Resume</a>
-      </nav>
-    </div>
+  <header>
+    <h1>Dr. Justin Buergi, Ph.D.</h1>
+    <p>Game Design Researcher | Educator | Writer</p>
   </header>
 
-  <main class="container">
-    <!-- About -->
-    <section class="about" aria-labelledby="about-title">
-      <h2 id="about-title" class="sr-only">About Me</h2>
-      <p class="quote">“But the whole burden of my teaching is that you ought to be idle.” — <em>The Grasshopper</em></p>
-      <p class="blurb">
-        I’m a game design researcher and educator examining how the psychological needs of players can be satisfied in the absence of challenge.
-        Drawing from Self-Determination Theory and Cognitive Evaluation Theory, my work explores how idle games sustain motivation and engagement
-        through rapid progression, positive feedback, and freedom from failure.
+  <main>
+    <section class="about">
+      <blockquote>
+        “But the whole burden of my teaching is that you ought to be idle.” — <em>The Grasshopper</em>
+      </blockquote>
+      <p>
+        Game design researcher and educator examining how the psychological needs of players can be satisfied in the absence of challenge.
+        Drawing from Self-Determination Theory, my work explores how idle games sustain motivation and engagement through rapid progression,
+        positive feedback, and freedom from failure.
       </p>
     </section>
 
-    <!-- Filters -->
-    <section class="filters" aria-label="filters">
-      <button class="filter-btn" data-filter="all" aria-pressed="true">All</button>
-      <button class="filter-btn" data-filter="game">Games</button>
-      <button class="filter-btn" data-filter="write">Academic Writing</button>
-      <button class="filter-btn" data-filter="pixel">Pixel Art</button>
-      <button class="filter-btn" data-filter="vfx3d">3D</button>
-      <button class="filter-btn" data-filter="art">Other Art</button>
-    </section>
+    <div class="filters">
+      <button class="active" onclick="filterSelection('all')">All</button>
+      <button onclick="filterSelection('game')">Games</button>
+      <button onclick="filterSelection('academic')">Academic Writing</button>
+      <button onclick="filterSelection('pixel')">Pixel Art</button>
+      <button onclick="filterSelection('threeD')">3D</button>
+      <button onclick="filterSelection('art')">Other Art</button>
+    </div>
 
-    <!-- Grid -->
-    <section class="grid" id="grid" aria-live="polite">
-      <!-- ============ GAMES (cards link to itch pages, not iframes) ============ -->
-      <article class="card game" data-cat="game">
-        <a href="https://justking.itch.io/ladders-are-built-to-be-scaled-3" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Open Ladders Are Built to Be Scaled 3 on itch.io">
-          <img src="thumbs/ladders.jpg" alt="Thumbnail of Ladders Are Built to Be Scaled 3"/>
-        </a>
-        <div class="meta">
-          <h3>Ladders Are Built to Be Scaled 3</h3>
-          <p>RPI GameFest 2025 — Technical Excellence Winner</p>
-          <div class="tags"><span class="tag main">Game</span><span class="tag">Unity</span></div>
-        </div>
-      </article>
+    <section class="grid">
+      <!-- Games -->
+      <div class="card game">
+        <h3><a href="https://justking.itch.io/ladders-are-built-to-be-scaled-3" target="_blank">Ladders Are Built to Be Scaled 3</a></h3>
+        <p>RPI GameFest 2025 — Technical Excellence Winner</p>
+        <span class="tag">[Game]</span>
+      </div>
 
-      <article class="card game" data-cat="game">
-        <a href="https://justking.itch.io/escaping-the-friend-zone" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Open Escaping the Friend Zone on itch.io">
-          <img src="thumbs/friendzone.jpg" alt="Thumbnail of Escaping the Friend Zone"/>
-        </a>
-        <div class="meta">
-          <h3>Escaping the Friend Zone</h3>
-          <p>McKinney Writing Contest — 2nd Place Graduate Electronic Media</p>
-          <div class="tags"><span class="tag main">Game</span></div>
-        </div>
-      </article>
+      <div class="card game">
+        <h3><a href="https://justking.itch.io/escaping-the-friend-zone" target="_blank">Escaping the Friend Zone</a></h3>
+        <p>McKinney Writing Contest — 2nd Place Graduate Electronic Media</p>
+        <span class="tag">[Game]</span>
+      </div>
 
-      <article class="card game" data-cat="game">
-        <a href="https://justking.itch.io/one-step-further" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Open One Step Further on itch.io">
-          <img src="thumbs/onestep.jpg" alt="Thumbnail of One Step Further"/>
-        </a>
-        <div class="meta">
-          <h3>One Step Further</h3>
-          <p>RPI GameFest 2024 — Experimental Game Winner</p>
-          <div class="tags"><span class="tag main">Game</span></div>
-        </div>
-      </article>
+      <div class="card game">
+        <h3><a href="https://justking.itch.io/one-step-further" target="_blank">One Step Further</a></h3>
+        <p>RPI GameFest 2024 — Experimental Game Winner</p>
+        <span class="tag">[Game]</span>
+      </div>
 
-      <article class="card game" data-cat="game">
-        <a href="https://justking.itch.io/idle-deliveries" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Open Idle Deliveries on itch.io">
-          <img src="thumbs/idle-deliveries.jpg" alt="Thumbnail of Idle Deliveries"/>
-        </a>
-        <div class="meta">
-          <h3>Idle Deliveries</h3>
-          <p>Capitalism is about having others make you money.</p>
-          <div class="tags"><span class="tag main">Game</span></div>
-        </div>
-      </article>
+      <div class="card game">
+        <h3><a href="https://justking.itch.io/idle-deliveries" target="_blank">Idle Deliveries</a></h3>
+        <p>Capitalism is about having others make you money.</p>
+        <span class="tag">[Game]</span>
+      </div>
 
-      <article class="card game" data-cat="game">
-        <a href="https://justking.itch.io/idle-tamer" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Open Idle Tamer on itch.io">
-          <img src="thumbs/idle-tamer.jpg" alt="Thumbnail of Idle Tamer"/>
-        </a>
-        <div class="meta">
-          <h3>Idle Tamer</h3>
-          <p>Send your bunnies to slay the rabbit king!</p>
-          <div class="tags"><span class="tag main">Game</span></div>
-        </div>
-      </article>
+      <!-- Academic Writing -->
+      <div class="card academic">
+        <h3><a href="https://www.proquest.com/docview/3258810217?pq-origsite=gscholar&fromopenview=true" target="_blank">
+          Idle Yet Engaged: How Idle Games Satisfy Our Needs for Competence and Autonomy</a></h3>
+        <p>Ph.D. Dissertation</p>
+        <span class="tag">[Academic Writing]</span>
+      </div>
 
-      <article class="card game" data-cat="game">
-        <a href="https://justking.itch.io/here-there-be-dragons" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Open Here There Be Dragons on itch.io">
-          <img src="thumbs/dragons.jpg" alt="Thumbnail of Here There Be Dragons"/>
-        </a>
-        <div class="meta">
-          <h3>Here There Be Dragons</h3>
-          <p>Find the dragons!</p>
-          <div class="tags"><span class="tag main">Game</span></div>
-        </div>
-      </article>
+      <div class="card academic">
+        <h3><a href="https://czasopisma.uni.lodz.pl/Replay/article/view/23588" target="_blank">
+          Idle Games: A Cozy Genre Turned Exploitative</a></h3>
+        <p>Replay: The Polish Journal of Game Studies</p>
+        <span class="tag">[Academic Writing]</span>
+      </div>
 
-      <article class="card game" data-cat="game">
-        <a href="https://justking.itch.io/who-done-it" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Open Who Done It? on itch.io">
-          <img src="thumbs/whodoneit.jpg" alt="Thumbnail of Who Done It?"/>
-        </a>
-        <div class="meta">
-          <h3>Who Done It?</h3>
-          <p>Identify the killer—resist microtransaction temptation.</p>
-          <div class="tags"><span class="tag main">Game</span></div>
-        </div>
-      </article>
+      <div class="card academic">
+        <h3><a href="https://mediacommons.org/imr/content/motivation-through-coziness" target="_blank">
+          Motivation Through Coziness</a></h3>
+        <p>In Media Res</p>
+        <span class="tag">[Academic Writing]</span>
+      </div>
 
-      <article class="card game" data-cat="game">
-        <a href="https://justking.itch.io/rp-idle" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Open RP(idle) on itch.io">
-          <img src="thumbs/rpidle.jpg" alt="Thumbnail of RP(idle)"/>
-        </a>
-        <div class="meta">
-          <h3>RP(idle)</h3>
-          <p>Automate to Oblivion.</p>
-          <div class="tags"><span class="tag main">Game</span></div>
-        </div>
-      </article>
+      <!-- Pixel Art -->
+      <div class="card pixel">
+        <h3>Angry</h3>
+        <p>Animated pixel art — bird sprite</p>
+        <span class="tag">[Pixel Art]</span>
+      </div>
 
-      <article class="card game" data-cat="game">
-        <a href="https://justking.itch.io/pig-clicker" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Open Pig Clicker on itch.io">
-          <img src="thumbs/pigclicker.jpg" alt="Thumbnail of Pig Clicker"/>
-        </a>
-        <div class="meta">
-          <h3>Pig Clicker</h3>
-          <p>Click the Pig.</p>
-          <div class="tags"><span class="tag main">Game</span></div>
-        </div>
-      </article>
+      <div class="card pixel">
+        <h3>Mountains</h3>
+        <p>Looping landscape animation</p>
+        <span class="tag">[Pixel Art]</span>
+      </div>
 
-      <article class="card game" data-cat="game">
-        <a href="https://justking.itch.io/calm-waters" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Open Calm Waters on itch.io">
-          <img src="thumbs/calmwaters.jpg" alt="Thumbnail of Calm Waters"/>
-        </a>
-        <div class="meta">
-          <h3>Calm Waters</h3>
-          <p>Guide your ship through the storm.</p>
-          <div class="tags"><span class="tag main">Game</span></div>
-        </div>
-      </article>
+      <div class="card pixel">
+        <h3>Rain</h3>
+        <p>Atmospheric pixel scene</p>
+        <span class="tag">[Pixel Art]</span>
+      </div>
 
-      <article class="card game" data-cat="game">
-        <a href="https://justking.itch.io/pov" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Open P.O.V. on itch.io">
-          <img src="thumbs/pov.jpg" alt="Thumbnail of POV"/>
-        </a>
-        <div class="meta">
-          <h3>P.O.V.</h3>
-          <p>Flip, grow, shrink—platforming adventure.</p>
-          <div class="tags"><span class="tag main">Game</span></div>
-        </div>
-      </article>
+      <!-- 3D -->
+      <div class="card threeD">
+        <h3><a href="https://www.youtube.com/watch?v=idmpt94_jtA" target="_blank">3D Visual Effects Final</a></h3>
+        <p>Created in Houdini</p>
+        <span class="tag">[3D]</span>
+      </div>
 
-      <!-- ============ ACADEMIC WRITING ============ -->
-      <article class="card write" data-cat="write">
-        <a href="https://www.proquest.com/docview/3258810217?pq-origsite=gscholar&fromopenview=true" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Read Dissertation">
-          <img src="thumbs/dissertation.jpg" alt="Dissertation cover placeholder"/>
-        </a>
-        <div class="meta">
-          <h3>Idle Yet Engaged: How Idle Games Satisfy Our Needs for Competence and Autonomy</h3>
-          <p>Ph.D. Dissertation</p>
-          <div class="tags"><span class="tag main">Academic Writing</span></div>
-        </div>
-      </article>
+      <div class="card threeD">
+        <h3><a href="https://www.youtube.com/watch?v=Zq2jjhIHotQ" target="_blank">3D Bootcamp Final</a></h3>
+        <p>Unity and Maya</p>
+        <span class="tag">[3D]</span>
+      </div>
 
-      <article class="card write" data-cat="write">
-        <a href="https://czasopisma.uni.lodz.pl/Replay/article/view/23588" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Read Replay article">
-          <img src="thumbs/replay.jpg" alt="Replay journal placeholder"/>
-        </a>
-        <div class="meta">
-          <h3>Idle Games: A Cozy Genre Turned Exploitative</h3>
-          <p><em>Replay: The Polish Journal of Game Studies</em></p>
-          <div class="tags"><span class="tag main">Academic Writing</span></div>
-        </div>
-      </article>
+      <!-- Other Art -->
+      <div class="card art">
+        <h3>Adorable</h3>
+        <p>Illustration — 2021</p>
+        <span class="tag">[Other Art]</span>
+      </div>
 
-      <article class="card write" data-cat="write">
-        <a href="https://mediacommons.org/imr/content/motivation-through-coziness" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Read In Media Res entry">
-          <img src="thumbs/imr.jpg" alt="In Media Res placeholder"/>
-        </a>
-        <div class="meta">
-          <h3>Motivation Through Coziness</h3>
-          <p><em>In Media Res</em></p>
-          <div class="tags"><span class="tag main">Public Scholarship</span></div>
-        </div>
-      </article>
-
-      <!-- ============ 3D / VFX (link to YouTube) ============ -->
-      <article class="card vfx3d" data-cat="vfx3d">
-        <a href="https://www.youtube.com/watch?v=idmpt94_jtA" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Watch 3D Visual Effects Final">
-          <img src="thumbs/vfx-final.jpg" alt="3D Visual Effects thumbnail"/>
-        </a>
-        <div class="meta">
-          <h3>3D Visual Effects Final</h3>
-          <p>Houdini</p>
-          <div class="tags"><span class="tag main">3D</span></div>
-        </div>
-      </article>
-
-      <article class="card vfx3d" data-cat="vfx3d">
-        <a href="https://www.youtube.com/watch?v=Zq2jjhIHotQ" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Watch 3D Bootcamp Final">
-          <img src="thumbs/3d-bootcamp.jpg" alt="3D Bootcamp thumbnail"/>
-        </a>
-        <div class="meta">
-          <h3>3D Bootcamp Final</h3>
-          <p>Unity &amp; Maya</p>
-          <div class="tags"><span class="tag main">3D</span></div>
-        </div>
-      </article>
-
-      <!-- ============ PIXEL ART ============ -->
-      <article class="card art" data-cat="pixel">
-        <a href="pixel/justkingBirdC.gif" target="_blank" rel="noopener" class="thumb-wrap" aria-label="View pixel art Angry">
-          <img src="pixel/justkingBirdC.gif" alt="Pixel art: Angry bird"/>
-        </a>
-        <div class="meta">
-          <h3>Angry</h3>
-          <p>Pixel Art</p>
-          <div class="tags"><span class="tag main">Pixel Art</span></div>
-        </div>
-      </article>
-
-      <article class="card art" data-cat="pixel">
-        <a href="pixel/scene1g.gif" target="_blank" rel="noopener" class="thumb-wrap" aria-label="View pixel art Mountains">
-          <img src="pixel/scene1g.gif" alt="Pixel art: Mountains"/>
-        </a>
-        <div class="meta">
-          <h3>Mountains</h3>
-          <p>Pixel Art</p>
-          <div class="tags"><span class="tag main">Pixel Art</span></div>
-        </div>
-      </article>
-
-      <article class="card art" data-cat="pixel">
-        <a href="pixel/eyeDeath.gif" target="_blank" rel="noopener" class="thumb-wrap" aria-label="View pixel art Boom">
-          <img src="pixel/eyeDeath.gif" alt="Pixel art: Boom"/>
-        </a>
-        <div class="meta">
-          <h3>Boom</h3>
-          <p>Pixel Art</p>
-          <div class="tags"><span class="tag main">Pixel Art</span></div>
-        </div>
-      </article>
-
-      <!-- ============ OTHER ART ============ -->
-      <article class="card art" data-cat="art">
-        <a href="art/sheep.jpg" target="_blank" rel="noopener" class="thumb-wrap" aria-label="View art Adorable">
-          <img src="art/sheep.jpg" alt="Drawing of a sheep"/>
-        </a>
-        <div class="meta">
-          <h3>Adorable</h3>
-          <p>Other Art</p>
-          <div class="tags"><span class="tag main">Art</span></div>
-        </div>
-      </article>
-
-      <article class="card art" data-cat="art">
-        <a href="art/hollow.png" target="_blank" rel="noopener" class="thumb-wrap" aria-label="View art Merry Christmas">
-          <img src="art/hollow.png" alt="Holiday themed drawing"/>
-        </a>
-        <div class="meta">
-          <h3>Merry Christmas</h3>
-          <p>Other Art</p>
-          <div class="tags"><span class="tag main">Art</span></div>
-        </div>
-      </article>
-
-      <article class="card art" data-cat="art">
-        <a href="art/pokemon.jpg" target="_blank" rel="noopener" class="thumb-wrap" aria-label="View art Who's That Pokemon?">
-          <img src="art/pokemon.jpg" alt="Fan art: Pokemon"/>
-        </a>
-        <div class="meta">
-          <h3>Who's That Pokémon?</h3>
-          <p>Other Art</p>
-          <div class="tags"><span class="tag main">Art</span></div>
-        </div>
-      </article>
-
-      <article class="card art" data-cat="art">
-        <a href="art/260351096_4510323585670370_2817518948352853795_n.jpg" target="_blank" rel="noopener" class="thumb-wrap" aria-label="View art Inktober 2021">
-          <img src="art/260351096_4510323585670370_2817518948352853795_n.jpg" alt="Inktober 2021 collage"/>
-        </a>
-        <div class="meta">
-          <h3>Inktober 2021</h3>
-          <p>Other Art</p>
-          <div class="tags"><span class="tag main">Art</span></div>
-        </div>
-      </article>
-
-      <article class="card art" data-cat="art">
-        <a href="art/erma.jpg" target="_blank" rel="noopener" class="thumb-wrap" aria-label="View art Inktober 2022">
-          <img src="art/erma.jpg" alt="Inktober 2022 drawing"/>
-        </a>
-        <div class="meta">
-          <h3>Inktober 2022</h3>
-          <p>Other Art</p>
-          <div class="tags"><span class="tag main">Art</span></div>
-        </div>
-      </article>
-
-      <article class="card art" data-cat="art">
-        <a href="art/sonic.png" target="_blank" rel="noopener" class="thumb-wrap" aria-label="View art Inktober 2023">
-          <img src="art/sonic.png" alt="Inktober 2023 drawing"/>
-        </a>
-        <div class="meta">
-          <h3>Inktober 2023</h3>
-          <p>Other Art</p>
-          <div class="tags"><span class="tag main">Art</span></div>
-        </div>
-      </article>
+      <div class="card art">
+        <h3>Inktober 2022</h3>
+        <p>Daily drawings collection</p>
+        <span class="tag">[Other Art]</span>
+      </div>
     </section>
   </main>
 
   <footer>
-    <div class="container">
-      © <span id="year"></span> Justin Buergi • Contact: <a href="mailto:justkingScholar@gmail.com">justkingScholar@gmail.com</a>
-    </div>
+    © <span id="year"></span> Justin Buergi • Contact: <a href="mailto:justkingScholar@gmail.com">justkingScholar@gmail.com</a>
   </footer>
 
   <script>
-    // Year
-    document.getElementById('year').textContent = new Date().getFullYear();
+    // Year auto-update
+    document.getElementById("year").textContent = new Date().getFullYear();
 
-    // Filtering
-    const filterButtons = document.querySelectorAll('.filter-btn');
-    const cards = document.querySelectorAll('.card');
+    // Filtering logic
+    function filterSelection(category) {
+      const cards = document.querySelectorAll(".card");
+      const buttons = document.querySelectorAll(".filters button");
 
-    function setFilter(filter){
-      cards.forEach(card=>{
-        const cat = card.getAttribute('data-cat');
-        const show = (filter === 'all') || (cat === filter);
-        card.style.display = show ? 'block' : 'none';
+      buttons.forEach(btn => btn.classList.remove("active"));
+      event.target.classList.add("active");
+
+      cards.forEach(card => {
+        if (category === "all" || card.classList.contains(category)) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
       });
     }
-
-    filterButtons.forEach(btn=>{
-      btn.addEventListener('click', ()=>{
-        // toggle aria-pressed
-        filterButtons.forEach(b=>b.setAttribute('aria-pressed','false'));
-        btn.setAttribute('aria-pressed','true');
-        setFilter(btn.dataset.filter);
-      });
-    });
-
-    // Default: All
-    setFilter('all');
   </script>
 </body>
 </html>
