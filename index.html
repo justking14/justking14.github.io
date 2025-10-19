@@ -1,377 +1,508 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-     <meta name="viewport" content="width=device-width, initial-scale=1">
-     <style>
-          * {
-               box-sizing: border-box;
-          }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dr. Justin Buergi, Ph.D. — Portfolio</title>
 
-          body {
-background: linear-gradient(45deg, #7860ff, #D3B48E);
-               font-family: Arial;
-               display: flex;
-                              
-               align-items: center;
-               justify-content: center;
-               margin: 0px;
-               padding: 0px;
+  <!-- Typography -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet"/>
 
-          }
+  <!-- Basic SEO / Share -->
+  <meta name="description" content="Game Design Researcher | Educator | Writer — exploring how idle games satisfy psychological needs via SDT/CET."/>
+  <meta property="og:title" content="Dr. Justin Buergi — Portfolio"/>
+  <meta property="og:description" content="Game Design Researcher | Educator | Writer"/>
+  <meta property="og:type" content="website"/>
 
-          /* Center website */
-          .main {
-               max-width: 1000px;
-               margin: auto;
-          }
+  <style>
+    :root{
+      --navy:#1B365D;
+      --ink:#1c1e21;
+      --muted:#6b7280;
+      --card:#ffffff;
+      --bg:#ffffff;
+      --ring: rgba(27,54,93,0.18);
+      --ring-strong: rgba(27,54,93,0.28);
+      --shadow: 0 8px 20px rgba(0,0,0,0.08);
+      --shadow-hover: 0 14px 28px rgba(0,0,0,0.12);
+      --radius: 14px;
+    }
 
-          h1 {
-               font-size: 50px;
-               word-break: break-all;
-          }
+    * { box-sizing: border-box; }
+    html, body { margin:0; padding:0; background:var(--bg); color:var(--ink); font-family:Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji","Segoe UI Emoji"; line-height:1.5; }
 
-          .row {
-               margin: 10px -16px;
-          }
+    /* Header */
+    .site-header{
+      background:var(--navy);
+      color:#fff;
+      padding:28px 20px;
+      border-bottom:1px solid rgba(255,255,255,0.08);
+    }
+    .container{ max-width:1100px; margin:0 auto; padding:0 20px; }
+    .header-inner{
+      display:flex; align-items:center; justify-content:space-between; gap:20px;
+    }
+    .brand{
+      display:flex; align-items:center; gap:16px; flex-wrap:wrap;
+    }
+    .avatar{
+      width:64px; height:64px; border-radius:50%; object-fit:cover; border:2px solid rgba(255,255,255,0.25);
+      box-shadow:0 4px 14px rgba(0,0,0,0.25);
+    }
+    .title-group h1{ margin:0; font-size:1.5rem; font-weight:700; letter-spacing:.2px; }
+    .title-group p{ margin:2px 0 0; font-size:.98rem; opacity:.92; }
 
-          /* Add padding BETWEEN each column */
-          .row,
-          .row>.column {
-               padding: 5px;
-          }
+    .links{
+      display:flex; gap:12px; flex-wrap:wrap;
+    }
+    .link-btn{
+      background:#fff; color:var(--navy); border:1px solid rgba(255,255,255,0.2);
+      padding:10px 14px; border-radius:10px; text-decoration:none; font-weight:600; font-size:.95rem;
+      box-shadow:0 2px 10px rgba(0,0,0,0.08);
+    }
+    .link-btn:hover{ filter:brightness(0.98); transform:translateY(-1px); transition:all .12s ease-in-out; }
 
-          /* Create three equal columns that floats next to each other */
-          .column {
-               float: left;
-               width: 33.33%;
-               display: none;
-               /* Hide all elements by default */
-          }
+    /* About */
+    .about{
+      padding:28px 0 8px;
+    }
+    .about .quote{
+      font-style:italic; color:var(--muted); margin:0 0 6px; font-size:.98rem;
+    }
+    .about .blurb{
+      margin:8px 0 0; font-size:1.04rem;
+    }
 
-          /* Clear floats after rows */
-          .row:after {
-               content: "";
-               display: table;
-               clear: both;
-          }
+    /* Filter bar */
+    .filters{
+      margin:24px 0 8px; display:flex; gap:10px; flex-wrap:wrap;
+    }
+    .filter-btn{
+      border:1px solid var(--ring); color:var(--navy); background:#fff;
+      padding:10px 14px; border-radius:999px; font-weight:600; cursor:pointer;
+      box-shadow:0 2px 8px rgba(0,0,0,0.05);
+    }
+    .filter-btn[aria-pressed="true"]{
+      background:var(--navy); color:#fff; border-color:var(--navy);
+      box-shadow:0 2px 10px var(--ring-strong);
+    }
 
-          /* Content */
-          .content {
-               background-color: rgb(184, 184, 184);
-               padding: 10px;
+    /* Grid */
+    .grid{
+      display:grid; gap:18px;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      margin:16px 0 60px;
+    }
 
-               border: 5px solid black;
+    /* Cards */
+    .card{
+      background:var(--card); border-radius:var(--radius);
+      box-shadow:var(--shadow); overflow:hidden; border:1px solid rgba(0,0,0,0.04);
+      display:flex; flex-direction:column; transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+    .card:hover{ transform:translateY(-6px); box-shadow:var(--shadow-hover); border-color: var(--ring); }
+    .thumb-wrap{
+      position:relative; background:#f3f4f6; aspect-ratio:16/9; overflow:hidden;
+    }
+    .thumb-wrap img{
+      width:100%; height:100%; object-fit:cover; display:block;
+      transition: transform .4s ease;
+    }
+    .card:hover .thumb-wrap img{ transform: scale(1.035); }
+    .meta{
+      padding:14px 14px 12px;
+      display:flex; flex-direction:column; gap:6px;
+    }
+    .meta h3{ margin:0; font-size:1.02rem; line-height:1.35; }
+    .meta p{ margin:0; color:var(--muted); font-size:.95rem; }
+    .tags{ display:flex; gap:8px; flex-wrap:wrap; margin-top:6px; }
+    .tag{
+      font-size:.78rem; font-weight:700; letter-spacing:.3px;
+      padding:4px 8px; border-radius:999px; border:1px solid var(--ring); color:var(--navy); background:#fff;
+    }
+    /* subtle category accents (optional) */
+    .card.game   .tag.main{ background:#eef3ff; border-color:#c9d6ff; }
+    .card.write  .tag.main{ background:#f4f6f8; border-color:#d5d9df; }
+    .card.art    .tag.main{ background:#f7f2ff; border-color:#e1d9ff; }
+    .card.vfx3d  .tag.main{ background:#eefaf6; border-color:#cfe9de; }
 
+    /* Footer */
+    footer{
+      border-top:1px solid #eef2f7; padding:22px 0; color:var(--muted); font-size:.95rem;
+    }
 
-               width: 100%;
-               height: 150px;
-       
-          }
+    /* Utilities */
+    .sr-only{
+      position:absolute !important; width:1px; height:1px; padding:0; margin:-1px; overflow:hidden; clip:rect(0,0,0,0); white-space:nowrap; border:0;
+    }
 
-          .content:hover {
-     transform: scale(1.5); /* Double the size on hover */
-}
-          
-
-          /* The "show" class is added to the filtered elements */
-          .show {
-               display: flex;
-          }
-
-          /* Style the buttons */
-          .btn {
-               border: none;
-               outline: none;
-               padding: 12px 16px;
-               background-color: white;
-               cursor: pointer;
-          }
-
-          .btn:hover {
-               background-color: #ddd;
-          }
-
-          .btn.active {
-               background-color: #666;
-               color: white;
-          }
-     </style>
+    @media (max-width:560px){
+      .header-inner{ flex-direction:column; align-items:flex-start; }
+      .links{ width:100%; padding-top:6px; }
+      .avatar{ width:56px; height:56px; }
+    }
+  </style>
 </head>
-
 <body>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <!-- Optional profile photo: replace with your image path or remove the img tag -->
+        <img class="avatar" src="headshot.jpg" alt="Portrait of Dr. Justin Buergi"/>
+        <div class="title-group">
+          <h1>Dr. Justin Buergi, Ph.D.</h1>
+          <p>Game Design Researcher | Educator | Writer</p>
+        </div>
+      </div>
+      <nav class="links" aria-label="quick links">
+        <a class="link-btn" href="mailto:justkingScholar@gmail.com">Email</a>
+        <a class="link-btn" href="https://justking14.github.io" target="_blank" rel="noopener">Portfolio</a>
+        <a class="link-btn" href="Just_King_Resume.pdf" target="_blank" rel="noopener">CV/Resume</a>
+      </nav>
+    </div>
+  </header>
 
-     <!-- MAIN (Center website) -->
-     <div class="main">
+  <main class="container">
+    <!-- About -->
+    <section class="about" aria-labelledby="about-title">
+      <h2 id="about-title" class="sr-only">About Me</h2>
+      <p class="quote">“But the whole burden of my teaching is that you ought to be idle.” — <em>The Grasshopper</em></p>
+      <p class="blurb">
+        I’m a game design researcher and educator examining how the psychological needs of players can be satisfied in the absence of challenge.
+        Drawing from Self-Determination Theory and Cognitive Evaluation Theory, my work explores how idle games sustain motivation and engagement
+        through rapid progression, positive feedback, and freedom from failure.
+      </p>
+    </section>
 
-          <h1>Justin Buergi</h1>
-          <hr>
+    <!-- Filters -->
+    <section class="filters" aria-label="filters">
+      <button class="filter-btn" data-filter="all" aria-pressed="true">All</button>
+      <button class="filter-btn" data-filter="game">Games</button>
+      <button class="filter-btn" data-filter="write">Academic Writing</button>
+      <button class="filter-btn" data-filter="pixel">Pixel Art</button>
+      <button class="filter-btn" data-filter="vfx3d">3D</button>
+      <button class="filter-btn" data-filter="art">Other Art</button>
+    </section>
 
-          <h2> "but the whole burden of my teaching is that you ought to be idle"-the Grasshopper <BR><BR>
-               Justin Buergi is a graduate student at Rensselaer Polytechnic Institute, working towards his PhD in
-               Critical Game Design. His area of study is focused on idle games and how they keep players engagged.
-          </h2>
+    <!-- Grid -->
+    <section class="grid" id="grid" aria-live="polite">
+      <!-- ============ GAMES (cards link to itch pages, not iframes) ============ -->
+      <article class="card game" data-cat="game">
+        <a href="https://justking.itch.io/ladders-are-built-to-be-scaled-3" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Open Ladders Are Built to Be Scaled 3 on itch.io">
+          <img src="thumbs/ladders.jpg" alt="Thumbnail of Ladders Are Built to Be Scaled 3"/>
+        </a>
+        <div class="meta">
+          <h3>Ladders Are Built to Be Scaled 3</h3>
+          <p>RPI GameFest 2025 — Technical Excellence Winner</p>
+          <div class="tags"><span class="tag main">Game</span><span class="tag">Unity</span></div>
+        </div>
+      </article>
 
-          <h3>buergj@rpi.edu</h3>
+      <article class="card game" data-cat="game">
+        <a href="https://justking.itch.io/escaping-the-friend-zone" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Open Escaping the Friend Zone on itch.io">
+          <img src="thumbs/friendzone.jpg" alt="Thumbnail of Escaping the Friend Zone"/>
+        </a>
+        <div class="meta">
+          <h3>Escaping the Friend Zone</h3>
+          <p>McKinney Writing Contest — 2nd Place Graduate Electronic Media</p>
+          <div class="tags"><span class="tag main">Game</span></div>
+        </div>
+      </article>
 
+      <article class="card game" data-cat="game">
+        <a href="https://justking.itch.io/one-step-further" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Open One Step Further on itch.io">
+          <img src="thumbs/onestep.jpg" alt="Thumbnail of One Step Further"/>
+        </a>
+        <div class="meta">
+          <h3>One Step Further</h3>
+          <p>RPI GameFest 2024 — Experimental Game Winner</p>
+          <div class="tags"><span class="tag main">Game</span></div>
+        </div>
+      </article>
 
-          <div id="myBtnContainer">
-               <button class="btn active" onclick="filterSelection('Games')"> Games</button>
-               <button class="btn" onclick="filterSelection('Academic_Writing')"> Academic Writing</button>
+      <article class="card game" data-cat="game">
+        <a href="https://justking.itch.io/idle-deliveries" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Open Idle Deliveries on itch.io">
+          <img src="thumbs/idle-deliveries.jpg" alt="Thumbnail of Idle Deliveries"/>
+        </a>
+        <div class="meta">
+          <h3>Idle Deliveries</h3>
+          <p>Capitalism is about having others make you money.</p>
+          <div class="tags"><span class="tag main">Game</span></div>
+        </div>
+      </article>
 
-               <button class="btn" onclick="filterSelection('Pixel_Art')"> Pixel Art</button>
-               <button class="btn" onclick="filterSelection('3D')"> 3D</button>
+      <article class="card game" data-cat="game">
+        <a href="https://justking.itch.io/idle-tamer" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Open Idle Tamer on itch.io">
+          <img src="thumbs/idle-tamer.jpg" alt="Thumbnail of Idle Tamer"/>
+        </a>
+        <div class="meta">
+          <h3>Idle Tamer</h3>
+          <p>Send your bunnies to slay the rabbit king!</p>
+          <div class="tags"><span class="tag main">Game</span></div>
+        </div>
+      </article>
 
-               <button class="btn" onclick="filterSelection('Other_Art')"> Other Art</button>
+      <article class="card game" data-cat="game">
+        <a href="https://justking.itch.io/here-there-be-dragons" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Open Here There Be Dragons on itch.io">
+          <img src="thumbs/dragons.jpg" alt="Thumbnail of Here There Be Dragons"/>
+        </a>
+        <div class="meta">
+          <h3>Here There Be Dragons</h3>
+          <p>Find the dragons!</p>
+          <div class="tags"><span class="tag main">Game</span></div>
+        </div>
+      </article>
 
-          </div>
+      <article class="card game" data-cat="game">
+        <a href="https://justking.itch.io/who-done-it" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Open Who Done It? on itch.io">
+          <img src="thumbs/whodoneit.jpg" alt="Thumbnail of Who Done It?"/>
+        </a>
+        <div class="meta">
+          <h3>Who Done It?</h3>
+          <p>Identify the killer—resist microtransaction temptation.</p>
+          <div class="tags"><span class="tag main">Game</span></div>
+        </div>
+      </article>
 
-          <div class="column Academic_Writing">
-               <div class="content">
-                    <p><a href="https://www.proquest.com/docview/3258810217?pq-origsite=gscholar&fromopenview=true&sourcetype=Dissertations%20&%20Theses">
-                            Idle Yet Engaged: How Idle Games Satisfy Our Needs for Competence and Autonomy</a></p>
-                    <h4>PhD Dissertation</h4>
-               </div>
-          </div>
+      <article class="card game" data-cat="game">
+        <a href="https://justking.itch.io/rp-idle" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Open RP(idle) on itch.io">
+          <img src="thumbs/rpidle.jpg" alt="Thumbnail of RP(idle)"/>
+        </a>
+        <div class="meta">
+          <h3>RP(idle)</h3>
+          <p>Automate to Oblivion.</p>
+          <div class="tags"><span class="tag main">Game</span></div>
+        </div>
+      </article>
 
-          <div class="column Academic_Writing">
-               <div class="content">
-                    <p><a href="https://czasopisma.uni.lodz.pl/Replay/article/view/23588">
-                              Idle Games: A Cozy Genre Turned Exploitative</a></p>
-                    <h4>Replay. The Polish Journal of Game Studies</h4>
-               </div>
-          </div>
+      <article class="card game" data-cat="game">
+        <a href="https://justking.itch.io/pig-clicker" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Open Pig Clicker on itch.io">
+          <img src="thumbs/pigclicker.jpg" alt="Thumbnail of Pig Clicker"/>
+        </a>
+        <div class="meta">
+          <h3>Pig Clicker</h3>
+          <p>Click the Pig.</p>
+          <div class="tags"><span class="tag main">Game</span></div>
+        </div>
+      </article>
 
-          <div class="column Academic_Writing">
-               <div class="content">
-                    <p><a href="https://mediacommons.org/imr/content/motivation-through-coziness">
-                              Motivation Through Coziness</a></p>
-                    <h4>In Media Res</h4>
-               </div>
-          </div>
+      <article class="card game" data-cat="game">
+        <a href="https://justking.itch.io/calm-waters" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Open Calm Waters on itch.io">
+          <img src="thumbs/calmwaters.jpg" alt="Thumbnail of Calm Waters"/>
+        </a>
+        <div class="meta">
+          <h3>Calm Waters</h3>
+          <p>Guide your ship through the storm.</p>
+          <div class="tags"><span class="tag main">Game</span></div>
+        </div>
+      </article>
 
-          
-          <!-- END MAIN -->
-     </div>
+      <article class="card game" data-cat="game">
+        <a href="https://justking.itch.io/pov" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Open P.O.V. on itch.io">
+          <img src="thumbs/pov.jpg" alt="Thumbnail of POV"/>
+        </a>
+        <div class="meta">
+          <h3>P.O.V.</h3>
+          <p>Flip, grow, shrink—platforming adventure.</p>
+          <div class="tags"><span class="tag main">Game</span></div>
+        </div>
+      </article>
 
-     
- 
+      <!-- ============ ACADEMIC WRITING ============ -->
+      <article class="card write" data-cat="write">
+        <a href="https://www.proquest.com/docview/3258810217?pq-origsite=gscholar&fromopenview=true" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Read Dissertation">
+          <img src="thumbs/dissertation.jpg" alt="Dissertation cover placeholder"/>
+        </a>
+        <div class="meta">
+          <h3>Idle Yet Engaged: How Idle Games Satisfy Our Needs for Competence and Autonomy</h3>
+          <p>Ph.D. Dissertation</p>
+          <div class="tags"><span class="tag main">Academic Writing</span></div>
+        </div>
+      </article>
 
-     <script>
-          //    response.setHeader("Set-Cookie", "HttpOnly;Secure;SameSite=Strict");
+      <article class="card write" data-cat="write">
+        <a href="https://czasopisma.uni.lodz.pl/Replay/article/view/23588" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Read Replay article">
+          <img src="thumbs/replay.jpg" alt="Replay journal placeholder"/>
+        </a>
+        <div class="meta">
+          <h3>Idle Games: A Cozy Genre Turned Exploitative</h3>
+          <p><em>Replay: The Polish Journal of Game Studies</em></p>
+          <div class="tags"><span class="tag main">Academic Writing</span></div>
+        </div>
+      </article>
 
-          function createArt(parent, type, src, title){
-               const div = document.createElement("div");
-               div.classList.add("column")
-               div.classList.add(type)
+      <article class="card write" data-cat="write">
+        <a href="https://mediacommons.org/imr/content/motivation-through-coziness" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Read In Media Res entry">
+          <img src="thumbs/imr.jpg" alt="In Media Res placeholder"/>
+        </a>
+        <div class="meta">
+          <h3>Motivation Through Coziness</h3>
+          <p><em>In Media Res</em></p>
+          <div class="tags"><span class="tag main">Public Scholarship</span></div>
+        </div>
+      </article>
 
-               const innerDiv = document.createElement("div")
-               innerDiv.classList.add("content")
-               innerDiv.style.width = "100%"
-               innerDiv.style.height = "350px"
-               innerDiv.style.alignItems = "center";
-               innerDiv.style.justifyContent = "center";
-               div.appendChild(innerDiv)
+      <!-- ============ 3D / VFX (link to YouTube) ============ -->
+      <article class="card vfx3d" data-cat="vfx3d">
+        <a href="https://www.youtube.com/watch?v=idmpt94_jtA" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Watch 3D Visual Effects Final">
+          <img src="thumbs/vfx-final.jpg" alt="3D Visual Effects thumbnail"/>
+        </a>
+        <div class="meta">
+          <h3>3D Visual Effects Final</h3>
+          <p>Houdini</p>
+          <div class="tags"><span class="tag main">3D</span></div>
+        </div>
+      </article>
 
-               const image = document.createElement("img")
-               image.src = src;
-               image.style.display = "block"
-              
-               image.style.maxWidth = "100%"
-               image.style.maxHeight = "275px"
-               image.style.width = "auto"
-               image.style.height = "auto"
-               image.style.alignItems = "center";
-               image.style.justifyContent = "center";
-               image.style.margin = "auto"
-               innerDiv.appendChild(image)
-               
+      <article class="card vfx3d" data-cat="vfx3d">
+        <a href="https://www.youtube.com/watch?v=Zq2jjhIHotQ" target="_blank" rel="noopener" class="thumb-wrap" aria-label="Watch 3D Bootcamp Final">
+          <img src="thumbs/3d-bootcamp.jpg" alt="3D Bootcamp thumbnail"/>
+        </a>
+        <div class="meta">
+          <h3>3D Bootcamp Final</h3>
+          <p>Unity &amp; Maya</p>
+          <div class="tags"><span class="tag main">3D</span></div>
+        </div>
+      </article>
 
-               const header = document.createElement("h4")
-               let text = document.createTextNode(title)
-               header.appendChild(text)
+      <!-- ============ PIXEL ART ============ -->
+      <article class="card art" data-cat="pixel">
+        <a href="pixel/justkingBirdC.gif" target="_blank" rel="noopener" class="thumb-wrap" aria-label="View pixel art Angry">
+          <img src="pixel/justkingBirdC.gif" alt="Pixel art: Angry bird"/>
+        </a>
+        <div class="meta">
+          <h3>Angry</h3>
+          <p>Pixel Art</p>
+          <div class="tags"><span class="tag main">Pixel Art</span></div>
+        </div>
+      </article>
 
-               innerDiv.appendChild(header)
-               parent.appendChild(div)
-          }
+      <article class="card art" data-cat="pixel">
+        <a href="pixel/scene1g.gif" target="_blank" rel="noopener" class="thumb-wrap" aria-label="View pixel art Mountains">
+          <img src="pixel/scene1g.gif" alt="Pixel art: Mountains"/>
+        </a>
+        <div class="meta">
+          <h3>Mountains</h3>
+          <p>Pixel Art</p>
+          <div class="tags"><span class="tag main">Pixel Art</span></div>
+        </div>
+      </article>
 
-          function create3DElement(parent, src, title, paragraphText){
-               const div = document.createElement("div");
-               div.classList.add("column")
-               div.classList.add("3D")
+      <article class="card art" data-cat="pixel">
+        <a href="pixel/eyeDeath.gif" target="_blank" rel="noopener" class="thumb-wrap" aria-label="View pixel art Boom">
+          <img src="pixel/eyeDeath.gif" alt="Pixel art: Boom"/>
+        </a>
+        <div class="meta">
+          <h3>Boom</h3>
+          <p>Pixel Art</p>
+          <div class="tags"><span class="tag main">Pixel Art</span></div>
+        </div>
+      </article>
 
-               const innerDiv = document.createElement("div")
-               innerDiv.classList.add("content")
-               innerDiv.style.height = "425px"
-               div.appendChild(innerDiv)
+      <!-- ============ OTHER ART ============ -->
+      <article class="card art" data-cat="art">
+        <a href="art/sheep.jpg" target="_blank" rel="noopener" class="thumb-wrap" aria-label="View art Adorable">
+          <img src="art/sheep.jpg" alt="Drawing of a sheep"/>
+        </a>
+        <div class="meta">
+          <h3>Adorable</h3>
+          <p>Other Art</p>
+          <div class="tags"><span class="tag main">Art</span></div>
+        </div>
+      </article>
 
-               const iframeHolder = document.createElement("iframe")
-               iframeHolder.classList.add("embed-responsive-item")
-               iframeHolder.style.frameborder = "0"
-               iframeHolder.style.allowfullscreen = "1"
-               iframeHolder.style.title = "YouTube Video Player"
-               iframeHolder.src = src
-               iframeHolder.style.width = "100%"
-               iframeHolder.style.height = "300px"
-               innerDiv.appendChild(iframeHolder)
+      <article class="card art" data-cat="art">
+        <a href="art/hollow.png" target="_blank" rel="noopener" class="thumb-wrap" aria-label="View art Merry Christmas">
+          <img src="art/hollow.png" alt="Holiday themed drawing"/>
+        </a>
+        <div class="meta">
+          <h3>Merry Christmas</h3>
+          <p>Other Art</p>
+          <div class="tags"><span class="tag main">Art</span></div>
+        </div>
+      </article>
 
-               const header = document.createElement("h4")
-               let text = document.createTextNode(title)
-               header.appendChild(text)
+      <article class="card art" data-cat="art">
+        <a href="art/pokemon.jpg" target="_blank" rel="noopener" class="thumb-wrap" aria-label="View art Who's That Pokemon?">
+          <img src="art/pokemon.jpg" alt="Fan art: Pokemon"/>
+        </a>
+        <div class="meta">
+          <h3>Who's That Pokémon?</h3>
+          <p>Other Art</p>
+          <div class="tags"><span class="tag main">Art</span></div>
+        </div>
+      </article>
 
-               const paragraph = document.createElement("p")
-               paragraph.appendChild(document.createTextNode(paragraphText))
+      <article class="card art" data-cat="art">
+        <a href="art/260351096_4510323585670370_2817518948352853795_n.jpg" target="_blank" rel="noopener" class="thumb-wrap" aria-label="View art Inktober 2021">
+          <img src="art/260351096_4510323585670370_2817518948352853795_n.jpg" alt="Inktober 2021 collage"/>
+        </a>
+        <div class="meta">
+          <h3>Inktober 2021</h3>
+          <p>Other Art</p>
+          <div class="tags"><span class="tag main">Art</span></div>
+        </div>
+      </article>
 
-               innerDiv.appendChild(header)
-               innerDiv.appendChild(paragraph)
+      <article class="card art" data-cat="art">
+        <a href="art/erma.jpg" target="_blank" rel="noopener" class="thumb-wrap" aria-label="View art Inktober 2022">
+          <img src="art/erma.jpg" alt="Inktober 2022 drawing"/>
+        </a>
+        <div class="meta">
+          <h3>Inktober 2022</h3>
+          <p>Other Art</p>
+          <div class="tags"><span class="tag main">Art</span></div>
+        </div>
+      </article>
 
-               parent.appendChild(div)
-          }
+      <article class="card art" data-cat="art">
+        <a href="art/sonic.png" target="_blank" rel="noopener" class="thumb-wrap" aria-label="View art Inktober 2023">
+          <img src="art/sonic.png" alt="Inktober 2023 drawing"/>
+        </a>
+        <div class="meta">
+          <h3>Inktober 2023</h3>
+          <p>Other Art</p>
+          <div class="tags"><span class="tag main">Art</span></div>
+        </div>
+      </article>
+    </section>
+  </main>
 
-          function createGameElement(parent, src, title, paragraphText){
-               const div = document.createElement("div");
-               div.classList.add("column")
-               div.classList.add("Games")
+  <footer>
+    <div class="container">
+      © <span id="year"></span> Justin Buergi • Contact: <a href="mailto:justkingScholar@gmail.com">justkingScholar@gmail.com</a>
+    </div>
+  </footer>
 
-               const innerDiv = document.createElement("div")
-               innerDiv.classList.add("content")
-               innerDiv.style.width = "100%"
-               innerDiv.style.height = "300px"
-               div.appendChild(innerDiv)
+  <script>
+    // Year
+    document.getElementById('year').textContent = new Date().getFullYear();
 
-               const iframeHolder = document.createElement("iframe")
-               iframeHolder.classList.add("embed-responsive-item")
-               iframeHolder.style.frameborder = "0"
-               iframeHolder.style.allowfullscreen = "1"
-               iframeHolder.style.title = "Itch Link"
-               iframeHolder.style.width = "99%" 
-               iframeHolder.src = src
-               innerDiv.appendChild(iframeHolder)
+    // Filtering
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const cards = document.querySelectorAll('.card');
 
-               const header = document.createElement("h4")
-               let text = document.createTextNode(title)
-               header.appendChild(text)
+    function setFilter(filter){
+      cards.forEach(card=>{
+        const cat = card.getAttribute('data-cat');
+        const show = (filter === 'all') || (cat === filter);
+        card.style.display = show ? 'block' : 'none';
+      });
+    }
 
-               const paragraph = document.createElement("p")
-               paragraph.appendChild(document.createTextNode(paragraphText))
+    filterButtons.forEach(btn=>{
+      btn.addEventListener('click', ()=>{
+        // toggle aria-pressed
+        filterButtons.forEach(b=>b.setAttribute('aria-pressed','false'));
+        btn.setAttribute('aria-pressed','true');
+        setFilter(btn.dataset.filter);
+      });
+    });
 
-               innerDiv.appendChild(header)
-               innerDiv.appendChild(paragraph)
-
-               parent.appendChild(div)
-
-          }
-          const div = document.createElement("div");
-          div.classList.add("row")
-
-          
-          createGameElement(div, "https://itch.io/embed/3488017", "Ladders Are Built to Be Scaled 3", "RPI Gamefest 2025: Technical Excellence Winner")
-          createGameElement(div, "https://itch.io/embed/3384621", "Escaping the Friend Zone", "McKinney Writing Contest: 2nd Place Graduate Electronic Media")
-
-          createGameElement(div, "https://itch.io/embed/2292317", "One Step Further", "RPI Gamefest 2024: Experimental Game Winner")
-          createGameElement(div, "https://itch.io/embed/2043015", "Idle Deliveries", "Capitalism is about having others make you money")
-          
-          
-          createGameElement(div, "https://itch.io/embed/2614991", "Idle Tamer", "Send your bunnies to slay the rabbit king!")
-
-          createGameElement(div, "https://itch.io/embed/1691293", "Here There Be Dragons", "Find the dragons!")
-          createGameElement(div, "https://itch.io/embed/1273329", "Who Done It?", "Can you identify the killer without giving into the temptation of microtransactions?")
-          createGameElement(div, "https://itch.io/embed/1436217", "RP(idle)", "Automate to Oblivion")
-          createGameElement(div, "https://itch.io/embed/1729164", "Pig Clicker", "Click the Pig")
-          createGameElement(div, "https://itch.io/embed/1219867", "Calm Waters", "Keep the wheel steady to guide your ship through a heavy storm.")
-          createGameElement(div, "https://itch.io/embed/337133", "P.O.V.", "Flip, grow, and shrink to navigate your way through this platforming adventure.")
-
-          
-          
-          create3DElement(div, "https://www.youtube.com/embed/idmpt94_jtA", "3D Visual Effects Final", "Made in Houdini")
-          create3DElement(div, "https://www.youtube.com/embed/Zq2jjhIHotQ?rel=0", "3D Bootcamp Final", "Made in Unity and Maya" )
-
-          createArt(div, "Other_Art", "sheep.jpg", "Adorable")
-          createArt(div, "Other_Art", "hollow.png", "Merry Christmas")
-          
-          createArt(div, "Other_Art", "pokemon.jpg", "Who's That Pokemon?")
-
-          createArt(div, "Other_Art", "260351096_4510323585670370_2817518948352853795_n.jpg", "Inktober 2021")
-          createArt(div, "Other_Art", "erma.jpg", "Inktober 2022")
-          createArt(div, "Other_Art", "sonic.png", "Inktober 2023")
-
-          createArt(div, "Pixel_Art", "justkingBirdC.gif", "Angry")
-          
-          createArt(div, "Pixel_Art", "scene1g.gif", "Mountains")
-          createArt(div, "Pixel_Art", "eyeDeath.gif", "Boom")
-          createArt(div, "Pixel_Art", "rain2.gif", "Rain")
-          createArt(div, "Pixel_Art", "plant.gif", "Be Careful")
-          createArt(div, "Pixel_Art", "train2.gif", "Train")
-          createArt(div, "Pixel_Art", "unicorn1g.gif", "Untitled")
-
-          createArt(div, "Pixel_Art", "pig66.gif", "Trans-Pork")
-          createArt(div, "Pixel_Art", "tv.gif", "Turn It Off")
-
-
-          document.getElementsByClassName("main")[0].appendChild(div)
-
-    
-
-          filterSelection("Games")
-          function filterSelection(c) {
-               var x, i;
-               x = document.getElementsByClassName("column");
-               if (c == "All") { c = ""; }
-               for (i = 0; i < x.length; i++) {
-                    w3RemoveClass(x[i], "show");
-                    if (x[i].className.indexOf(c) > -1) { w3AddClass(x[i], "show"); }
-               }
-          }
-
-          //remove item if they aren't present
-          function w3RemoveClass(element, name) {
-               var i, arr1, arr2;
-               arr1 = element.className.split(" ");
-               arr2 = name.split(" ");
-               console.log(arr1, arr2, arr1.indexOf(arr2[0]))
-               for (i = 0; i < arr2.length; i++) {
-                    while (arr1.indexOf(arr2[i]) > -1) { arr1.splice(arr1.indexOf(arr2[i]), 1); }
-               }
-               element.className = arr1.join(" ");
-          }
-
-          //add item if they are present
-          function w3AddClass(element, name) {
-               var i, arr1, arr2;
-               arr1 = element.className.split(" ");
-               arr2 = name.split(" ");
-               for (i = 0; i < arr2.length; i++) {
-                    if (arr1.indexOf(arr2[i]) == -1) { element.className += " " + arr2[i]; }
-               }
-          }
-
-
-
-          // Add active class to the current button (highlight it)
-          var btnContainer = document.getElementById("myBtnContainer");
-          var btns = btnContainer.getElementsByClassName("btn");
-          for (var i = 0; i < btns.length; i++) {
-               btns[i].addEventListener("click", function () {
-                    var current = document.getElementsByClassName("active");
-                    current[0].className = current[0].className.replace(" active", "");
-                    this.className += " active";
-               });
-          }
-
-
-
-
-          function getRandomColor() {
-               var letters = '0123456789ABCDEF';
-               var color = '#';
-               for (var i = 0; i < 6; i++) {
-                    color += letters[Math.floor(Math.random() * 16)];
-               }
-               return color;
-          }
-
-
-     </script>
-
+    // Default: All
+    setFilter('all');
+  </script>
 </body>
-
 </html>
+
