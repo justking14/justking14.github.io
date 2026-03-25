@@ -110,10 +110,12 @@
     <div class="nav-inner">
       <div class="brand">Dr. Justin Buergi</div>
       <div class="tabs" id="tabs" role="tablist" aria-label="Portfolio Sections">
+
+        <button class="tab" role="tab" aria-selected="false" data-target="ux">Case Studies</button>
+
         <button class="tab active" role="tab" aria-selected="true" data-target="games">Games</button>
         <button class="tab" role="tab" aria-selected="false" data-target="writing">Academic Writing</button>
         
-        <button class="tab" role="tab" aria-selected="false" data-target="ux">UX Case Studies</button>
 
         <button class="tab" role="tab" aria-selected="false" data-target="pixel">Pixel Art</button>
         <button class="tab" role="tab" aria-selected="false" data-target="vfx3d">3D</button>
@@ -193,32 +195,59 @@
     </section>
 
 
-  <!-- UX Design -->
-    <section id="ux" class="content-section" aria-labelledby="writing-h">
-      <div class="section-header">
-        <h3 id="writing-h">Case Studies</h3>
-        <p>Design Projects</p>
-      </div>
-      <div class="list">
-        <div class="list-item">
-          <a href="https://docs.google.com/presentation/d/1SCOaNUoODTbuQv7rYaoauYMaD_JEbXn_5Lwc-0KXtvY/edit?usp=sharing" target="_blank" rel="noopener">
-            <strong>Burger Shack</strong>
-          </a>
-          <div class="meta">Mobile ordering case study focused on customization and allergen clarity</div>
-        </div>
-        
-        <div class="list-item">
-          <a href="https://docs.google.com/presentation/d/1fq1n1bEfcivTDX9zOxUEOK4YVlUfBkOaiwImfbYzY_U/edit?usp=sharing" target="_blank" rel="noopener">
-            <strong>Firebase Multiplayer & Data Tracking Case Study</strong>
-          </a>
-          <div class="meta">
-            Using Firebase as a real-time backend for behavioral analytics and multiplayer synchronization across two game systems
-          </div>
-        </div>
+<!-- CASE STUDIES -->
+<section id="ux" class="content-section" aria-labelledby="ux-h">
+  <div class="section-header">
+    <h3 id="ux-h">Design Case Studies</h3>
+    <p>Selected work in UX design, systems design, and behavioral research</p>
+  </div>
 
-        
+  <div class="case-grid">
+
+    <!-- CASE STUDY 1 -->
+    <article class="case-card">
+      <div class="case-header">
+        <h4>Burger Shack</h4>
+        <span class="case-tag">UX Design</span>
       </div>
-    </section>
+
+      <p class="case-hook">
+        Redesigned a mobile ordering experience to handle complex customization and allergen visibility without overwhelming users.
+      </p>
+
+      <div class="case-details">
+        <div><strong>Focus:</strong> Customization Flow, Accessibility, Usability Testing</div>
+        <div><strong>Outcome:</strong> Improved clarity in ingredient selection and reduced cognitive load during ordering</div>
+      </div>
+
+      <a class="case-link" href="https://docs.google.com/presentation/d/1SCOaNUoODTbuQv7rYaoauYMaD_JEbXn_5Lwc-0KXtvY/edit?usp=sharing" target="_blank" rel="noopener">
+        View Case Study →
+      </a>
+    </article>
+
+    <!-- CASE STUDY 2 -->
+    <article class="case-card">
+      <div class="case-header">
+        <h4>Firebase Multiplayer & Analytics</h4>
+        <span class="case-tag">Systems / QA</span>
+      </div>
+
+      <p class="case-hook">
+        Built a real-time backend system to synchronize multiplayer gameplay and track player behavior across a week-long experimental study.
+      </p>
+
+      <div class="case-details">
+        <div><strong>Focus:</strong> Firebase, Real-Time Sync, Data Logging</div>
+        <div><strong>Outcome:</strong> Enabled detection of player behavior patterns, including auto-clicking and engagement trends</div>
+      </div>
+
+      <a class="case-link" href="https://docs.google.com/presentation/d/1fq1n1bEfcivTDX9zOxUEOK4YVlUfBkOaiwImfbYzY_U/edit?usp=sharing" target="_blank" rel="noopener">
+        View Case Study →
+      </a>
+    </article>
+
+  </div>
+</section>
 
 
     
