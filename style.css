@@ -320,4 +320,69 @@ html {
      margin-top: 3em;
      margin-bottom: 3em;
 }
-  
+
+
+.case-grid{
+  display:grid;
+  gap:20px;
+  grid-template-columns:repeat(2, minmax(0,1fr));
+}
+
+@media (max-width:820px){
+  .case-grid{grid-template-columns:1fr;}
+}
+
+.case-card{
+  background:#fff;
+  border:1px solid var(--hr);
+  border-radius:14px;
+  padding:18px;
+  display:flex;
+  flex-direction:column;
+  gap:10px;
+  transition:transform .18s ease, box-shadow .18s ease;
+}
+
+.case-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 28px rgba(27,54,93,.12);
+}
+
+.case-header{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+
+.case-header h4{
+  margin:0;
+  font-size:17px;
+}
+
+.case-tag{
+  font-size:11px;
+  padding:4px 8px;
+  border-radius:999px;
+  background:#eef2ff;
+  font-weight:600;
+}
+
+.case-hook{
+  font-size:14px;
+  color:#374151;
+  line-height:1.5;
+}
+
+.case-details{
+  font-size:13px;
+  color:#6b7280;
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+
+.case-link{
+  margin-top:auto;
+  font-weight:600;
+  color:var(--navy);
+}
